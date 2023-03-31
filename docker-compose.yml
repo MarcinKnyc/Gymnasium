@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  backend:
+    build: ./api/GymApp
+    ports:
+      - "80:80"
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: gymnasium
+    healthcheck:
+      test: pg_isready -U myuser -d gymnasium
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+    ports: 
+      - "5432:5432"
+
+volumes:
+  postgres_data:
