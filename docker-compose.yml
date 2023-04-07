@@ -4,6 +4,8 @@ services:
   backend:
     image: ${DOCKER_REGISTRY-}backend
     build: ./api/GymApp
+    ports:
+      - 5000:80
   frontend:
     build: ./front/gym-app
     volumes:
@@ -27,8 +29,8 @@ services:
       timeout: 3s
       retries: 3
       start_period: 20s
-    ports: 
-      - "5432:5432"
+    ports:
+      - '5432:5432'
 
 volumes:
   postgres_data:
