@@ -6,8 +6,12 @@ services:
     build: ./api/GymApp
   frontend:
     build: ./front/gym-app
+    volumes:
+      - ./front/gym-app/:/app
+      - /app/node_modules
+      - /app/.next
     ports:
-      - "3000:3000"
+      - 3000:3000
   db:
     image: postgres
     restart: always
