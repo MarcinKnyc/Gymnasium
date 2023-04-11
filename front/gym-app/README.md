@@ -12,6 +12,27 @@ yarn dev
 pnpm dev
 ```
 
+How to install Swagger_js to the front docker:
+
+```bash
+#download jar from this link
+https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli/3.0.41
+#generating codegen folder from your swagger.js
+java -jar path/file.jar generate -i path/swagger.json -l langage -o path/output)
+#copy generated folder to front/gym-app folder
+
+#Turn on docker-compose:
+docker-compose up -d
+#Go to path Swagger_js/src/ApiClient.js and change line: this.basePath to
+this.basePath = 'http://localhost:5000'
+# Get container ID of your frontend
+docker ps
+# Go to docker terminal
+docker exec -it CONTAINER_ID /bin/sh
+# install there folder Swagger_js
+npm install Swagger_js
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
