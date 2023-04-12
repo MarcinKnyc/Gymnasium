@@ -1377,23 +1377,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Krzysio\\.nuget\\packages\\": {},
+    "C:\\Users\\pbeni\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Krzysio\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\GymApp.csproj",
+      "projectUniqueName": "C:\\Users\\pbeni\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\GymApp.csproj",
       "projectName": "GymApp",
-      "projectPath": "C:\\Users\\Krzysio\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\GymApp.csproj",
-      "packagesPath": "C:\\Users\\Krzysio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Krzysio\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\obj\\",
+      "projectPath": "C:\\Users\\pbeni\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\GymApp.csproj",
+      "packagesPath": "C:\\Users\\pbeni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pbeni\\Desktop\\Gymnasium\\api\\GymApp\\GymApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Krzysio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pbeni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1464,7 +1464,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
