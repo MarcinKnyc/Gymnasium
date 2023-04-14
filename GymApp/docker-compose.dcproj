@@ -3,10 +3,11 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>da105b14-5365-4faa-9b49-11cb8e36c060</ProjectGuid>
+    <ProjectGuid>73956b18-191f-4dc5-9539-527a462cc6b5</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>backend</DockerServiceName>
+	<DockerComposeProjectName>gymnasium</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

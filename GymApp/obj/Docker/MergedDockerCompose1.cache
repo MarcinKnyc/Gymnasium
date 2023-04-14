@@ -1,4 +1,4 @@
-name: dockercompose1427224872835961812
+name: gymnasium
 services:
   backend:
     build:
@@ -31,6 +31,7 @@ services:
     ports:
     - mode: ingress
       target: 80
+      published: "80"
       protocol: tcp
     tty: true
     volumes:
@@ -98,6 +99,7 @@ services:
     build:
       context: C:\Users\kamil\Desktop\Gymnasium\GymApp\front\gym-app
       dockerfile: Dockerfile
+    image: frontend
     networks:
       default: null
     ports:
@@ -119,7 +121,7 @@ services:
       volume: {}
 networks:
   default:
-    name: dockercompose1427224872835961812_default
+    name: gymnasium_default
 volumes:
   postgres_data:
-    name: dockercompose1427224872835961812_postgres_data
+    name: gymnasium_postgres_data
