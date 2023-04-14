@@ -1,0 +1,126 @@
+name: dockercompose1427224872835961812
+services:
+  backend:
+    build:
+      context: C:\Users\kamil\Desktop\Gymnasium\GymApp
+      dockerfile: GymApp/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: GymApp
+      target: base
+    container_name: GymApp
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: ""
+    image: backend:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/GymApp.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    tty: true
+    volumes:
+    - type: bind
+      source: C:\Users\kamil\Desktop\Gymnasium\GymApp\GymApp
+      target: /app
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\kamil\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\kamil\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\kamil\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\kamil\.nuget\packages\
+      target: /root/.nuget/packages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\kamil\Desktop\Gymnasium\GymApp
+      target: /src
+      bind:
+        create_host_path: true
+  db:
+    environment:
+      POSTGRES_DB: gymnasium
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: myuser
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U myuser -d gymnasium
+      timeout: 3s
+      interval: 10s
+      retries: 3
+      start_period: 20s
+    image: postgres
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5432"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: postgres_data
+      target: /var/lib/postgresql/data
+      volume: {}
+  frontend:
+    build:
+      context: C:\Users\kamil\Desktop\Gymnasium\GymApp\front\gym-app
+      dockerfile: Dockerfile
+    image: frontend
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 3000
+      published: "3000"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\kamil\Desktop\Gymnasium\GymApp\front\gym-app
+      target: /app
+      bind:
+        create_host_path: true
+    - type: volume
+      target: /app/node_modules
+      volume: {}
+    - type: volume
+      target: /app/.next
+      volume: {}
+networks:
+  default:
+    name: dockercompose1427224872835961812_default
+volumes:
+  postgres_data:
+    name: dockercompose1427224872835961812_postgres_data
