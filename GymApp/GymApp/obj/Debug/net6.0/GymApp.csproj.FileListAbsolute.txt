@@ -309,3 +309,15 @@ C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\obj\Debug\net6.0\scopedcss\bundle
 C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\obj\Debug\net6.0\GymApp.csproj.CopyComplete
 C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\obj\Debug\net6.0\GymApp.genruntimeconfig.cache
 C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\obj\Debug\net6.0\ref\GymApp.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
