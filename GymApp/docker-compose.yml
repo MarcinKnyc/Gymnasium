@@ -8,11 +8,10 @@ services:
       dockerfile: GymApp/Dockerfile
   frontend:
     image: frontend
-    build: ./front/gym-app
+    build: ./gym-app/gym-app
     volumes:
-      - ./front/gym-app/:/app
+      - ./gym-app/gym-app/:/app
       - /app/node_modules
-      - /app/.next
     ports:
       - 3000:3000
   db:
