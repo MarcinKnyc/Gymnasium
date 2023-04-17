@@ -3,7 +3,7 @@ version: '3.4'
 services:
   backend:
     image: backend:dev
-    container_name: GymApp
+    container_name: GymApp_2
     build:
       target: base
       labels:
@@ -12,19 +12,20 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
     volumes:
-      - C:\Users\kamil\Desktop\Gymnasium\GymApp\GymApp:/app
-      - C:\Users\kamil\Desktop\Gymnasium\GymApp:/src
-      - C:\Users\kamil\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\kamil\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Users\pbeni\Desktop\Gymnasium\GymApp\GymApp:/app
+      - C:\Users\pbeni\Desktop\Gymnasium\GymApp:/src
+      - C:\Users\pbeni\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\pbeni\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/net6.0/GymApp.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/GymApp.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
