@@ -21,15 +21,16 @@ export const navItems = [
   },
   {
     id: 5,
-    text: 'Contact',
-    url: '',
+    text: 'Zaloguj się',
+    url: 'login',
+    icon: 'fa solid fa-user-plus',
   },
 ]
 
 export const socialLinks = [
   {
     id: 1,
-    href: 'https://www.twitter.com',
+    href: 'https://www.facebook.com/',
     icon: 'fab fa-facebook',
   },
   {
@@ -39,7 +40,7 @@ export const socialLinks = [
   },
   {
     id: 3,
-    href: 'https://www.twitter.com',
-    icon: 'fab fa-squarespace',
+    href: 'https://www.instagram.com/',
+    icon: 'fab fa-instagram',
   },
 ]
