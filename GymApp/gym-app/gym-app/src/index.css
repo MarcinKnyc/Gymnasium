@@ -237,6 +237,82 @@ nav .menu-btn,
   margin-top: 15px;
 }
 
+#login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(181, 8, 8, 0.38) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(181, 8, 8, 0.38) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(181, 8, 8, 0.38) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61b50808', endColorstr='#99000000',GradientType=1 );
+}
+#login h1 {
+  color: #fff;
+  font-size: 4rem;
+}
+#login h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+#login h3 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+#login form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#login form input {
+  width: 100%;
+  height: 50px;
+  margin: 10px 0px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #ffffff2d;
+  color: #ffffff;
+  border-radius: 5px;
+}
+#login form input[type='submit'] {
+  height: 45px;
+  background: linear-gradient(90deg, #ff1414 20%, #f70000);
+  color: #ffffff;
+  text-transform: uppercase;
+}
+#login form input[type='submit']:hover {
+  background-color: transparent;
+  transition: all ease 5s;
+  color: #ffffff;
+  border: 2px solid #ff1414;
+}
+@media (max-width: 620px) {
+  #login form {
+    width: 90%;
+  }
+}
+
 @media (max-width: 1190px) {
   #main {
     background-size: 1150px !important;
@@ -392,13 +468,14 @@ nav .menu-btn,
 }
 
 .footer {
-  background: #171616;
   text-align: center;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding: 5rem 0;
-  margin-top: 200px;
+  padding: 1rem 0;
   scroll-margin-top: 5rem;
+  margin-top: 5rem;
+  position: absolute;
+  width: 100%;
 }
 .footer-links,
 .footer-icons {
