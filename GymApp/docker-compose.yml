@@ -19,7 +19,7 @@ services:
     build: ./gym-app/gym-app
     volumes:
       - ./gym-app/gym-app/:/app
-      - ./gym-app/gym-app/node_modules:/app/node_modules
+      - /app/node_modules
     ports:
       - 3000:3000
   db:
