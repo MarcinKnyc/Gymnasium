@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GymApp.Data;
 using GymApp.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace GymApp.Controllers
 {
@@ -24,7 +23,6 @@ namespace GymApp.Controllers
 
         // GET: api/Clients
         [HttpGet]
-        [Authorize(Roles = "Admin,Receptionist")] //w tokienie JWT musi byc info o roli uzytkownika 
         public async Task<ActionResult<IEnumerable<Client>>> GetClient_1()
         {
           if (_context.Client_1 == null)

@@ -1,15 +1,14 @@
 version: '3.4'
 
 services:
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_LISTEN_PORT: 3333
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:3333"
+  #pgadmin:
+  #  image: dpage/pgadmin4
+  #  restart: always
+  #  environment:
+  #    PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #    PGADMIN_DEFAULT_PASSWORD: root
+  #  ports:
+  #    - "5050:80"
   backend:
     image: ${DOCKER_REGISTRY-}backend
     build:
