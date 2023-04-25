@@ -22,7 +22,7 @@ namespace GymApp.Controllers
         }
 
         // GET: api/Clients
-        [HttpGet]
+        [HttpGet()]
         public async Task<ActionResult<IEnumerable<Client>>> GetClient_1()
         {
           if (_context.Client_1 == null)
