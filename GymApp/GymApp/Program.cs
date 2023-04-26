@@ -1,3 +1,6 @@
+global using GymApp.Services; //is global good?
+global using GymApp.Models;
+
 using GymApp.Data;
 using System;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +10,13 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddScoped<IEmailService,EmailService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
