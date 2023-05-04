@@ -1,12 +1,61 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
+  const navigate = useNavigate()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios
+      .post('http://localhost/api/Authorization/login', {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response)
+        const authToken = response.data
+        localStorage.setItem('authToken', authToken)
+        // axios
+        //   .get('http://localhost/WeatherForecast', {
+        //     headers: {
+        //       Authorization: `Bearer ${response.data}`,
+        //     },
+        //   })
+        //   .then((res) => {
+        //     console.log(res.data)
+        //   })
+        //   .catch((error) => {
+        //     console.error(error)
+        //   })
+        window.location.replace('/')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div id="login">
       <h1>Zaloguj się</h1>
-      <form action="">
-        <input type="email" placeholder="Adres E-Mail" required />
-        <input type="password" placeholder="Hasło" required />
+      <form action="" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Adres E-Mail"
+          required
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Hasło"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <input type="submit" value="Zaloguj się" />
       </form>
       <a href="#">

@@ -12,18 +12,12 @@ export const navItems = [
   {
     id: 3,
     text: 'Karnety',
-    url: 'passes',
+    url: 'Passes',
   },
   {
     id: 4,
     text: 'Kontakt',
     url: 'contact',
-  },
-  {
-    id: 5,
-    text: 'Zaloguj się',
-    url: 'login',
-    icon: 'fa solid fa-user-plus',
   },
 ]
 

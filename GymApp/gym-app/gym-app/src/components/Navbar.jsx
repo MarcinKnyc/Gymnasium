@@ -1,7 +1,16 @@
 import logo from '../images/logo.png'
 import { Link } from 'react-router-dom'
 import { navItems } from '../assets/data'
-const Navbar = () => {
+import { useEffect, useState } from 'react'
+
+const Navbar = ({ storedAuthToken, clearStorage }) => {
+  //const [storedAuthToken, setStoredAuthToken] = useState(null)
+
+  // useEffect(() => {
+  //   setStoredAuthToken(localStorage.getItem('authToken'))
+  // }, [storedAuthToken])
+
+  // console.log(storedAuthToken)
   return (
     <nav className="nav">
       <Link to="/">
@@ -30,6 +39,37 @@ const Navbar = () => {
             </Link>
           )
         })}
+        {storedAuthToken ? (
+          <li
+            onClick={() => {
+              clearStorage()
+            }}
+          >
+            <i
+              className={'fa solid fa-user-minus'}
+              style={{
+                fontSize: '20px',
+                marginTop: '10px',
+                marginRight: '5px',
+              }}
+            ></i>
+            Wyloguj się
+          </li>
+        ) : (
+          <Link to={'login'}>
+            <li>
+              <i
+                className={'fa solid fa-user-plus'}
+                style={{
+                  fontSize: '20px',
+                  marginTop: '10px',
+                  marginRight: '5px',
+                }}
+              ></i>
+              Zaloguj się
+            </li>
+          </Link>
+        )}
       </ul>
     </nav>
   )

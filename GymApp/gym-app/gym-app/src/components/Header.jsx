@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 const Header = () => {
   return (
     <div id="main">
@@ -12,13 +12,6 @@ const Header = () => {
           Zmień swoje ciało, zmień swoje życie - dołącz do naszej siłowni już
           dziś!
         </p>
-        <div className="header-btns">
-          <Link to="register">
-            <button type="button" className="header-btn">
-              DOŁĄCZ
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   )
