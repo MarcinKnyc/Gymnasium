@@ -22,6 +22,8 @@ button {
 .logo img {
   width: 90px;
 }
+
+/* HEADER CLASSES */
 #main {
   width: 100%;
   height: 1200px;
@@ -58,48 +60,6 @@ button {
   width: 100%;
   height: 100%;
   z-index: -1;
-}
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background-color: #171616;
-  transition: 0.6s ease-in-out;
-}
-
-nav ul {
-  display: flex;
-}
-
-nav ul li {
-  font-family: 'Lato';
-  height: 40px;
-  line-height: 43px;
-  margin: 3px;
-  padding: 0px 22px;
-  display: flex;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #ffffff;
-  letter-spacing: 1px;
-  border-radius: 3px;
-  transition: 0.2s ease-in-out;
-}
-nav ul li:hover {
-  background-color: #ff1414;
-  color: #ffffff;
-  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
-  transition: all ease 0.2s;
-}
-nav .menu-btn,
-.menu-icon {
-  display: none;
 }
 .name {
   text-align: center;
@@ -154,6 +114,52 @@ nav .menu-btn,
   color: #ffffff;
   border: 2px solid #ff1414;
 }
+
+/* NAVBAR CLASSES */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #171616;
+  transition: 0.6s ease-in-out;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  font-family: 'Lato';
+  height: 40px;
+  line-height: 43px;
+  margin: 3px;
+  padding: 0px 22px;
+  display: flex;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+}
+nav ul li:hover {
+  background-color: #ff1414;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+  transition: all ease 0.2s;
+}
+nav .menu-btn,
+.menu-icon {
+  display: none;
+}
+
+/* FEATURES CLASSES */
 
 #features {
   width: 100%;
@@ -237,6 +243,8 @@ nav .menu-btn,
   margin-top: 15px;
 }
 
+/* LOGIN / REGISTER  CLASSES */
+
 #login {
   width: 100%;
   height: 100vh;
@@ -307,6 +315,56 @@ nav .menu-btn,
   color: #ffffff;
   border: 2px solid #ff1414;
 }
+
+/* FOOTER CLASSES */
+.footer {
+  text-align: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding: 1rem 0;
+  scroll-margin-top: 5rem;
+  margin-top: 5rem;
+  position: absolute;
+  width: 100%;
+}
+.footer-links,
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-link {
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1rem;
+  margin-right: 1rem;
+  letter-spacing: 0.25rem;
+  transition: all 0.3s linear;
+}
+.footer-link:hover {
+  color: #ff1414;
+}
+.footer-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.footer-icon:hover {
+  color: #ff1414;
+}
+.copyright {
+  text-transform: capitalize;
+  letter-spacing: 0.25rem;
+  color: #fff;
+}
+.copyright span {
+  margin-left: 0.5rem;
+}
+
+/* MEDIA CLASSES */
+
 @media (max-width: 620px) {
   #login form {
     width: 90%;
@@ -465,50 +523,4 @@ nav .menu-btn,
     width: 100%;
     height: 400px;
   }
-}
-
-.footer {
-  text-align: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding: 1rem 0;
-  scroll-margin-top: 5rem;
-  margin-top: 5rem;
-  position: absolute;
-  width: 100%;
-}
-.footer-links,
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-.footer-link {
-  color: #fff;
-  text-transform: capitalize;
-  font-size: 1rem;
-  margin-right: 1rem;
-  letter-spacing: 0.25rem;
-  transition: all 0.3s linear;
-}
-.footer-link:hover {
-  color: #ff1414;
-}
-.footer-icon {
-  font-size: 2rem;
-  margin-right: 1rem;
-  color: #fff;
-  transition: all 0.3s linear;
-}
-.footer-icon:hover {
-  color: #ff1414;
-}
-.copyright {
-  text-transform: capitalize;
-  letter-spacing: 0.25rem;
-  color: #fff;
-}
-.copyright span {
-  margin-left: 0.5rem;
 }

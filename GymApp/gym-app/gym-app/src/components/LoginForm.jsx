@@ -1,4 +1,5 @@
 import React from 'react'
+
 const LoginForm = () => {
   return (
     <div id="login">
@@ -8,13 +9,17 @@ const LoginForm = () => {
         <input type="password" placeholder="Hasło" required />
         <input type="submit" value="Zaloguj się" />
       </form>
-      <h3>Nie pamiętam hasła</h3>
+      <a href="#">
+        <h3>Nie pamiętam hasła</h3>
+      </a>
       <h2 style={{ fontSize: '2.5rem', marginTop: '100px' }}>
         Nie masz jeszcze konta?
       </h2>
-      <button type="button" className="header-btn">
-        Zarejestruj się
-      </button>
+      <a href="register">
+        <button type="button" className="header-btn">
+          Zarejestruj się
+        </button>
+      </a>
     </div>
   )
 }

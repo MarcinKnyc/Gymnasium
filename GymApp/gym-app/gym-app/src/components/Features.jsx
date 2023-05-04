@@ -7,7 +7,7 @@ import FeatureBox from './FeatureBox'
 const Features = () => {
   return (
     <div id="features">
-      <h1>Moje stanowiska</h1>
+      <h1>Nasze stanowiska</h1>
       <div className="a-container">
         <FeatureBox
           img={img1}
