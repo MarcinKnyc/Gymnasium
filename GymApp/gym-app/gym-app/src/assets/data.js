@@ -1,23 +1,23 @@
 export const navItems = [
   {
     id: 1,
-    text: 'Header',
-    url: '',
+    text: 'Opinie',
+    url: 'reviews',
   },
   {
     id: 2,
-    text: 'Feature',
-    url: '',
+    text: 'Trenerzy',
+    url: 'trainers',
   },
   {
     id: 3,
-    text: 'Offer',
-    url: '',
+    text: 'Karnety',
+    url: 'passes',
   },
   {
     id: 4,
-    text: 'About',
-    url: '',
+    text: 'Kontakt',
+    url: 'contact',
   },
   {
     id: 5,
