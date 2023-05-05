@@ -524,3 +524,106 @@ nav .menu-btn,
     height: 400px;
   }
 }
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Lato';
+  align-items: center;
+  padding-top: 40px;
+  margin-top: 50px;
+}
+.title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+.table-container form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.table-container form input {
+  width: 15%;
+  height: 30px;
+  margin: 10px 10px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #ffffff2d;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.table-container form button[type='submit'] {
+  height: 35px;
+  background: linear-gradient(90deg, #ff1414 20%, #f70000);
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+.table-container form button[type='submit']:hover {
+  background-color: transparent;
+  transition: all ease 5s;
+  color: #ffffff;
+  border: 2px solid #ff1414;
+}
+.edit-form {
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+.edit-form button {
+  height: 25px;
+  background: linear-gradient(90deg, #171616 10%, #171616);
+  margin: 0px 5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+.edit-form td input {
+  width: 80%;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: #171616;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.edit-form td button[type='submit'] {
+  height: 25px;
+  background: linear-gradient(90deg, #171616 10%, #171616);
+  margin: 0px 5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+table {
+  border-collapse: collapse;
+
+  width: 80%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  color: white;
+}
+
+th {
+  background-color: #8a0303;
+}
+
+tr:nth-child(even) {
+  background-color: #ff1414;
+}
+
+tr:nth-child(odd) {
+  background-color: #ff1414;
+}
