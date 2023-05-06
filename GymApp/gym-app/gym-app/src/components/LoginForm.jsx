@@ -19,18 +19,6 @@ const LoginForm = () => {
         console.log(response)
         const authToken = response.data
         localStorage.setItem('authToken', authToken)
-        // axios
-        //   .get('http://localhost/WeatherForecast', {
-        //     headers: {
-        //       Authorization: `Bearer ${response.data}`,
-        //     },
-        //   })
-        //   .then((res) => {
-        //     console.log(res.data)
-        //   })
-        //   .catch((error) => {
-        //     console.error(error)
-        //   })
         window.location.replace('/')
       })
       .catch((error) => {
