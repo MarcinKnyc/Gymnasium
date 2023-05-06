@@ -7,6 +7,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import PassesPage from './pages/PassesPage'
+import ClientsPage from './pages/ClientsPage'
 import { useEffect, useState } from 'react'
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
           <Route
             path={'Passes'}
             element={<PassesPage storedAuthToken={storedAuthToken} />}
+          />
+          <Route
+            path={'clients'}
+            element={<ClientsPage storedAuthToken={storedAuthToken} />}
           />
         </Routes>
         <Footer />
