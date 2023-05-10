@@ -14,13 +14,6 @@ namespace GymApp.Data
             modelBuilder.UseSerialColumns();
         }
         public DbSet<Gym> Gyms { get; set; }
-        public DbSet<Gym> Client { get; set; }
-        public DbSet<Gym> Entrance { get; set; }
-        public DbSet<Gym> EntranceEvent { get; set; }
-        public DbSet<Gym> Pass { get; set; }
-        public DbSet<Gym> PassBoughtEvent { get; set; }
-        public DbSet<Gym> Receptionist { get; set; }
-        public DbSet<Gym> Sector { get; set; }
         public DbSet<GymApp.Models.Client>? Client_1 { get; set; }
         public DbSet<GymApp.Models.EntranceEvent>? EntranceEvent_1 { get; set; }
         public DbSet<GymApp.Models.Entrance>? Entrance_1 { get; set; }

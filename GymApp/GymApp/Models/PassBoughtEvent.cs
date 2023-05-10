@@ -7,6 +7,6 @@
         public Pass Pass { get; set; }
         public Guid ClientId { get; set; }
         public Client Client { get; set; }
-
+        public int refresh { get; set; }
     }
 }
