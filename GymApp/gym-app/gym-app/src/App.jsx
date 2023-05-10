@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
-
+  
   useEffect(() => {
     setStoredAuthToken(localStorage.getItem('authToken'))
   }, [storedAuthToken])
@@ -27,7 +27,7 @@ function App() {
       <Router>
         <Navbar storedAuthToken={storedAuthToken} clearStorage={clearStorage} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage storedAuthToken={storedAuthToken}/>} />
           <Route path="login" element={<LoginPage />} />
           <Route path={'/login/register'} element={<RegisterPage />} />
           <Route path={'register'} element={<RegisterPage />} />
