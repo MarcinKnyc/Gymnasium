@@ -4,6 +4,7 @@ import img2 from '../images/water-ladder-solid.svg'
 import img3 from '../images/bath-solid.svg'
 import img4 from '../images/heart-pulse-solid.svg'
 import FeatureBox from './FeatureBox'
+
 const Features = () => {
   return (
     <div id="features">

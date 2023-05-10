@@ -1,10 +1,10 @@
 import Features from '../components/Features'
 import Header from '../components/Header'
 
-const HomePage = () => {
+const HomePage = ({storedAuthToken}) => {
   return (
     <>
-      <Header />
+      <Header storedAuthToken={storedAuthToken}/>
       <Features />
     </>
   )

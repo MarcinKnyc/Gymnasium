@@ -15,7 +15,7 @@ function App() {
 
   const apiClient = new ApiClient()
   apiClient.basePath = 'http://localhost'
-
+  
   useEffect(() => {
     setStoredAuthToken(localStorage.getItem('authToken'))
   }, [storedAuthToken])
