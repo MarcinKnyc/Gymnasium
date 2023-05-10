@@ -16,8 +16,8 @@ const Navbar = ({ storedAuthToken, clearStorage }) => {
       <ul className="menu">
         {navItems.map((item) => {
           return (
-            <Link to={item.url}>
-              <li key={item.id}>
+            <Link to={item.url} key={item.id}>
+              <li>
                 <i
                   className={item.icon}
                   style={{

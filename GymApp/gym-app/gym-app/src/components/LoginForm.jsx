@@ -1,15 +1,14 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
-  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
     axios
       .post('http://localhost/api/Authorization/login', {
         username: username,
