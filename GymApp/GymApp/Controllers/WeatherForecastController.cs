@@ -19,7 +19,8 @@ namespace GymApp.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast"),Authorize(Roles = "Admin")]
+        [HttpGet(Name = "GetWeatherForecast")]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
