@@ -1,21 +1,11 @@
 import React from 'react'
 
-const Pass = ({
-  id,
-  date,
-  temperatureC,
-  temperatureF,
-  summary,
-  handleEdit,
-  handleDelete,
-  item,
-}) => {
+const Pass = ({ id, handleEdit, handleDelete, item }) => {
   return (
-    <tr>
-      <td>{date}</td>
-      <td>{temperatureC}</td>
-      <td>{temperatureF}</td>
-      <td>{summary}</td>
+    <tr key={id}>
+      {Object.entries(item).map(([key, value]) => {
+        return <td key={key}>{value}</td>
+      })}
       <td>
         <button type="button" onClick={(e) => handleEdit(e, id, item)}>
           EDIT

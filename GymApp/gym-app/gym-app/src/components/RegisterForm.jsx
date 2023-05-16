@@ -14,16 +14,15 @@ const RegisterForm = () => {
       username: name,
       password: password,
     }
+    //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
     axios
       .post('http://localhost/api/Authorization/registerClient', userData)
       .then((response) => {
         console.log(response.data)
-        // Dodaj kod obsługi sukcesu rejestracji
         setIsRegistered(true)
       })
       .catch((error) => {
         console.error(error)
-        // Dodaj kod obsługi błędów rejestracji
       })
   }
   return isRegistered ? (
