@@ -11,13 +11,23 @@ export const navItems = [
   },
   {
     id: 3,
+    text: 'Kontakt ',
+    url: 'contact',
+  },
+  {
+    id: 4,
     text: 'Karnety',
     url: 'Passes',
   },
   {
-    id: 4,
-    text: 'Kontakt',
-    url: 'contact',
+    id: 5,
+    text: 'Klienci',
+    url: 'Clients',
+  },
+  {
+    id: 6,
+    text: 'Siłownie',
+    url: 'Gyms',
   },
 ]
 
