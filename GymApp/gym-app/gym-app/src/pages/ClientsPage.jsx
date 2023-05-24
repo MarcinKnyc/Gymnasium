@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Pass from '../components/Pass'
-import EditablePass from '../components/EditablePass'
+import Client from '../components/Client'
+import EditableClient from '../components/EditableClient'
 import { v4 as uuid } from 'uuid'
-import { PassesApi } from '../codegen/src/api/PassesApi'
+import { ClientsApi } from '../codegen/src/api/ClientsApi'
 
-const PassesPage = ({ apiClient }) => {
-  const passesApi = new PassesApi(apiClient)
+const ClientsPage = ({ apiClient }) => {
+  const clientsApi = new ClientsApi(apiClient)
   const [data, setData] = useState([])
-  const [editPassId, setEditPassId] = useState(null)
+  const [editClientId, setEditClientId] = useState(null)
   const [addFormData, setAddFormData] = useState(data[0])
   const [editFormData, setEditFormData] = useState(data[0])
 
@@ -22,25 +22,14 @@ const PassesPage = ({ apiClient }) => {
 
   const handleAddFormSubmit = (e) => {
     e.preventDefault()
-    const pass = { id: uuid(), ownerId: uuid(), ...addFormData }
-    const newData = [...data, pass]
+    const client = { id: uuid(), ownerId: uuid(), ...addFormData }
+    const newData = [...data, client]
     setData(newData)
-
-    // let opts = {
-    //   body: pass, // Pass |
-    // }
-    // passesApi.apiPassesPost(opts, (error, data, response) => {
-    //   if (error) {
-    //     console.error(error)
-    //   } else {
-    //     console.log('API called successfully. Returned data: ' + data)
-    //   }
-    // })
   }
 
   const handleEdit = (e, id, item) => {
     e.preventDefault()
-    setEditPassId(id)
+    setEditClientId(id)
     const formValues = { ...item }
     setEditFormData(formValues)
   }
@@ -56,36 +45,21 @@ const PassesPage = ({ apiClient }) => {
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault()
-    const editedPass = { ...editFormData, id: editPassId }
+    const editedClient = { ...editFormData, id: editClientId }
     const newData = [...data]
-    const index = data.findIndex((pass) => pass.id === editPassId)
-    newData[index] = editedPass
+    const index = data.findIndex((client) => client.id === editClientId)
+    newData[index] = editedClient
     setData(newData)
-    setEditPassId(null)
+    setEditClientId(null)
   }
 
-  const handleDelete = (passId) => {
-    const newPasses = data.filter((pass) => pass.id !== passId)
-    setData(newPasses)
+  const handleDelete = (clientId) => {
+    const newClients = data.filter((client) => client.id !== clientId)
+    setData(newClients)
   }
-
-  //SAVED FOR THE FUTURE, HOW TO GET DATA WITH AUTH TOKEN
-
-  // apiClient.authentications.oauth2.type = 'oauth2'
-  // apiClient.authentications.oauth2.accessToken = storedAuthToken
-
-  // const request = weatherForecastApi.getWeatherForecast((error, data) => {
-  //   if (error) {
-  //     console.error('Error fetching weather forecast:', error)
-  //     return
-  //   }
-  //   setWeatherForecastData(data)
-  // })
-  // const authNames = ['oauth2']
-  // apiClient.applyAuthToRequest(request, authNames)
 
   useEffect(() => {
-    passesApi.apiPassesGet((error, data) => {
+    clientsApi.apiClientsGet((error, data) => {
       if (error) {
         console.error('Error fetching data:', error)
         return
@@ -97,7 +71,7 @@ const PassesPage = ({ apiClient }) => {
   return (
     <div className="table-container">
       <form onSubmit={handleAddFormSubmit}>
-        <span className="title">Add Pass</span>
+        <span className="title">Add Client</span>
         {data[0] &&
           Object.entries(data[0]).map(([key, value]) => {
             if (key !== 'id' && key !== 'ownerId')
@@ -129,13 +103,13 @@ const PassesPage = ({ apiClient }) => {
             {data.map((item) => {
               return (
                 <React.Fragment key={item.id}>
-                  {editPassId === item.id ? (
-                    <EditablePass
+                  {editClientId === item.id ? (
+                    <EditableClient
                       editFormData={editFormData}
                       handleEditFormChange={handleEditFormChange}
                     />
                   ) : (
-                    <Pass
+                    <Client
                       {...item}
                       handleEdit={handleEdit}
                       handleDelete={handleDelete}
@@ -152,4 +126,4 @@ const PassesPage = ({ apiClient }) => {
   )
 }
 
-export default PassesPage
+export default ClientsPage

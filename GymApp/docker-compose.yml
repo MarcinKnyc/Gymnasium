@@ -14,14 +14,14 @@ services:
     build:
       context: .
       dockerfile: GymApp/Dockerfile
-  #frontend:
-  #  image: frontend
-  #  build: ./gym-app/gym-app
-  #  volumes:
-  #    - ./gym-app/gym-app/:/app
-  #    - /app/node_modules/
-  #  ports:
-  #    - 3000:3000
+  frontend:
+    image: frontend
+    build: ./gym-app/gym-app
+    volumes:
+      - ./gym-app/gym-app/:/app
+      - /app/node_modules/
+    ports:
+      - 3000:3000
   db:
     image: postgres
     restart: always
