@@ -2,17 +2,18 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [plainTextPassword, setPlainTextPassword] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
     axios
-      .post('http://localhost/api/Authorization/login', {
-        username: username,
-        password: password,
+      .post('http://localhost/api/Login', {
+        email: email,
+        plainTextPassword: plainTextPassword,
+        userRoles: ['user'],
       })
       .then((response) => {
         console.log(response)
@@ -33,15 +34,15 @@ const LoginForm = () => {
           type="text"
           placeholder="Adres E-Mail"
           required
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Hasło"
           required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={plainTextPassword}
+          onChange={(e) => setPlainTextPassword(e.target.value)}
         />
         <input type="submit" value="Zaloguj się" />
       </form>
