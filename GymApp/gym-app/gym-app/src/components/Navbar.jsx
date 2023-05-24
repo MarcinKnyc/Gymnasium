@@ -1,16 +1,8 @@
 import logo from '../images/logo.png'
 import { Link } from 'react-router-dom'
 import { navItems } from '../assets/data'
-import { useEffect, useState } from 'react'
 
 const Navbar = ({ storedAuthToken, clearStorage }) => {
-  //const [storedAuthToken, setStoredAuthToken] = useState(null)
-
-  // useEffect(() => {
-  //   setStoredAuthToken(localStorage.getItem('authToken'))
-  // }, [storedAuthToken])
-
-  // console.log(storedAuthToken)
   return (
     <nav className="nav">
       <Link to="/">
@@ -24,8 +16,8 @@ const Navbar = ({ storedAuthToken, clearStorage }) => {
       <ul className="menu">
         {navItems.map((item) => {
           return (
-            <Link to={item.url}>
-              <li key={item.id}>
+            <Link to={item.url} key={item.id}>
+              <li>
                 <i
                   className={item.icon}
                   style={{

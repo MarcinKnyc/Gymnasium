@@ -4,7 +4,6 @@ const Header = () => {
   return (
     <div id="main">
       <div className="name">
-        <h2>CZY JESTEŚ </h2>
         <h1>
           <span>GOTOWY</span> NA WYZWANIE?
         </h1>

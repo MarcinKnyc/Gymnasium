@@ -8,9 +8,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import PassesPage from './pages/PassesPage'
 import { useEffect, useState } from 'react'
+import { ApiClient } from './codegen/src/ApiClient'
+import ClientsPage from './pages/ClientsPage'
+import GymsPage from './pages/GymsPage'
 
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
+
+  const apiClient = new ApiClient()
+  apiClient.basePath = 'http://localhost'
 
   useEffect(() => {
     setStoredAuthToken(localStorage.getItem('authToken'))
@@ -20,7 +26,6 @@ function App() {
     localStorage.removeItem('authToken')
     setStoredAuthToken(null)
   }
-  // console.log(storedAuthToken)
 
   return (
     <div className="App">
@@ -33,8 +38,13 @@ function App() {
           <Route path={'register'} element={<RegisterPage />} />
           <Route
             path={'Passes'}
-            element={<PassesPage storedAuthToken={storedAuthToken} />}
+            element={<PassesPage apiClient={apiClient} />}
           />
+          <Route
+            path={'Clients'}
+            element={<ClientsPage apiClient={apiClient} />}
+          />
+          <Route path={'Gyms'} element={<GymsPage apiClient={apiClient} />} />
         </Routes>
         <Footer />
       </Router>
