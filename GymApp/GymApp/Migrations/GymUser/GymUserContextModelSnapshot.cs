@@ -110,29 +110,6 @@ namespace GymApp.Migrations.GymUser
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1b665734-6922-4054-a023-be57fea22554",
-                            ConcurrencyStamp = "6a844c35-a831-45e8-9c00-fe7c4b203a90",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "11872a56-e770-461a-9842-3fb36064d7d2",
-                            ConcurrencyStamp = "fff74d4a-7e12-4e69-9f17-ad10bb2813a3",
-                            Name = "Receptionist",
-                            NormalizedName = "RECEPTIONIST"
-                        },
-                        new
-                        {
-                            Id = "2d503dc1-0a19-48d9-94b0-e196aa1dc255",
-                            ConcurrencyStamp = "684ccb52-9e84-40a5-a217-5652637af3d6",
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

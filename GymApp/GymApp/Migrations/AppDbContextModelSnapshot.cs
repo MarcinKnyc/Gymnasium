@@ -53,7 +53,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Client_1");
+                    b.ToTable("Client_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Entrance", b =>
@@ -77,7 +77,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("SectorId");
 
-                    b.ToTable("Entrance_1");
+                    b.ToTable("Entrance_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.EntranceEvent", b =>
@@ -104,7 +104,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("EntranceId");
 
-                    b.ToTable("EntranceEvent_1");
+                    b.ToTable("EntranceEvent_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Gym", b =>
@@ -130,7 +130,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gym");
+                    b.ToTable("Gym", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Pass", b =>
@@ -158,7 +158,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pass_1");
+                    b.ToTable("Pass_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.PassBoughtEvent", b =>
@@ -188,7 +188,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("PassId");
 
-                    b.ToTable("PassBoughtEvent_1");
+                    b.ToTable("PassBoughtEvent_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Receptionist", b =>
@@ -214,7 +214,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Receptionist_1");
+                    b.ToTable("Receptionist_1", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Sector", b =>
@@ -237,7 +237,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Sector_1");
+                    b.ToTable("Sector_1", (string)null);
                 });
 
             modelBuilder.Entity("GymReceptionist", b =>
@@ -252,7 +252,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("ReceptionistsId");
 
-                    b.ToTable("GymReceptionist");
+                    b.ToTable("GymReceptionist", (string)null);
                 });
 
             modelBuilder.Entity("GymApp.Models.Entrance", b =>
