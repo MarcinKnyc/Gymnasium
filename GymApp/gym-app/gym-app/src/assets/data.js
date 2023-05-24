@@ -29,6 +29,16 @@ export const navItems = [
     text: 'Siłownie',
     url: 'Gyms',
   },
+  {
+    id: 7,
+    text: 'Recepcjoniści',
+    url: 'Receptionists',
+  },
+  {
+    id: 8,
+    text: 'Admini',
+    url: 'Admins',
+  },
 ]
 
 export const socialLinks = [
