@@ -10,6 +10,8 @@ import PassesPage from './pages/PassesPage'
 import { useEffect, useState } from 'react'
 import { ApiClient } from './codegen/src/ApiClient'
 import ClientsPage from './pages/ClientsPage'
+import ReceptionistsPage from './pages/Receptionists'
+import AdminsPage from './pages/AdminsPage'
 import GymsPage from './pages/GymsPage'
 
 function App() {
@@ -45,6 +47,11 @@ function App() {
             element={<ClientsPage apiClient={apiClient} />}
           />
           <Route path={'Gyms'} element={<GymsPage apiClient={apiClient} />} />
+          <Route
+            path={'Receptionists'}
+            element={<ReceptionistsPage apiClient={apiClient} />}
+          />
+
         </Routes>
         <Footer />
       </Router>
