@@ -122,7 +122,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gym");
+                    b.ToTable("Gyms");
                 });
 
             modelBuilder.Entity("GymApp.Models.Pass", b =>
@@ -170,6 +170,9 @@ namespace GymApp.Migrations
 
                     b.Property<Guid>("PassId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("refresh")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

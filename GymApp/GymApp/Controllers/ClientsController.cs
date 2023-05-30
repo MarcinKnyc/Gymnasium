@@ -25,10 +25,10 @@ namespace GymApp.Controllers
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<Client>>> GetClient_1()
         {
-          if (_context.Client_1 == null)
-          {
-              return NotFound();
-          }
+            if (_context.Client_1 == null)
+            {
+                return NotFound();
+            }
             return await _context.Client_1.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace GymApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(Guid id)
         {
-          if (_context.Client_1 == null)
-          {
-              return NotFound();
-          }
+            if (_context.Client_1 == null)
+            {
+                return NotFound();
+            }
             var client = await _context.Client_1.FindAsync(id);
 
             if (client == null)
@@ -86,10 +86,10 @@ namespace GymApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
-          if (_context.Client_1 == null)
-          {
-              return Problem("Entity set 'AppDbContext.Client_1'  is null.");
-          }
+            if (_context.Client_1 == null)
+            {
+                return Problem("Entity set 'AppDbContext.Client_1'  is null.");
+            }
             _context.Client_1.Add(client);
             await _context.SaveChangesAsync();
 
