@@ -21,61 +21,14 @@ namespace GymApp.Controllers
             _context = context;
         }
 
-        // get all the active passes
-        [HttpGet("GetActivePasses/{clientId}")]
-        public IActionResult GetActivePasses(Guid clientId)
-        {
-            var activePassBoughtEvents = _context.Client_1
-                .Where(c => c.Id == clientId)
-                .SelectMany(c => c.PassBoughtEvents)
-                .Include(pbe => pbe.Pass)
-                .Where(pbe => DateTime.UtcNow < pbe.DateTime.AddDays(pbe.Pass.Duration * pbe.refresh))
-                .ToList();
-
-            return Ok(activePassBoughtEvents);
-        }
-
-
-        //reseting the Pass
-        [HttpPut("DeactivatePass/{passBoughtEventId}")]
-        public IActionResult DeactivatePass(Guid passBoughtEventId)
-        {
-            var passBoughtEvent = _context.PassBoughtEvent_1.FirstOrDefault(pbe => pbe.Id == passBoughtEventId);
-            if (passBoughtEvent == null)
-            {
-                return NotFound();
-            }
-
-            passBoughtEvent.refresh = 0;
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
-        // Extend the pass validity
-        [HttpPut("ExtendPassValidity/{passBoughtEventId}")]
-        public IActionResult ExtendPassValidity(Guid passBoughtEventId, int extension)
-        {
-            var passBoughtEvent = _context.PassBoughtEvent_1.FirstOrDefault(pbe => pbe.Id == passBoughtEventId);
-            if (passBoughtEvent == null)
-            {
-                return NotFound();
-            }
-
-            passBoughtEvent.refresh += extension;
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
         // GET: api/PassBoughtEvents
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PassBoughtEvent>>> GetPassBoughtEvent_1()
         {
-            if (_context.PassBoughtEvent_1 == null)
-            {
-                return NotFound();
-            }
+          if (_context.PassBoughtEvent_1 == null)
+          {
+              return NotFound();
+          }
             return await _context.PassBoughtEvent_1.ToListAsync();
         }
 
@@ -83,10 +36,10 @@ namespace GymApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PassBoughtEvent>> GetPassBoughtEvent(Guid id)
         {
-            if (_context.PassBoughtEvent_1 == null)
-            {
-                return NotFound();
-            }
+          if (_context.PassBoughtEvent_1 == null)
+          {
+              return NotFound();
+          }
             var passBoughtEvent = await _context.PassBoughtEvent_1.FindAsync(id);
 
             if (passBoughtEvent == null)
@@ -133,10 +86,10 @@ namespace GymApp.Controllers
         [HttpPost]
         public async Task<ActionResult<PassBoughtEvent>> PostPassBoughtEvent(PassBoughtEvent passBoughtEvent)
         {
-            if (_context.PassBoughtEvent_1 == null)
-            {
-                return Problem("Entity set 'AppDbContext.PassBoughtEvent_1'  is null.");
-            }
+          if (_context.PassBoughtEvent_1 == null)
+          {
+              return Problem("Entity set 'AppDbContext.PassBoughtEvent_1'  is null.");
+          }
             _context.PassBoughtEvent_1.Add(passBoughtEvent);
             await _context.SaveChangesAsync();
 

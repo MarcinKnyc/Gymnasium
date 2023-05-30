@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GymApp.Migrations
 {
     /// <inheritdoc />
-    public partial class newDb : Migration
+    public partial class databaseset : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,7 +27,7 @@ namespace GymApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gyms",
+                name: "Gym",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -38,7 +38,7 @@ namespace GymApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gyms", x => x.Id);
+                    table.PrimaryKey("PK_Gym", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,9 +84,9 @@ namespace GymApp.Migrations
                 {
                     table.PrimaryKey("PK_Sector_1", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sector_1_Gyms_GymId",
+                        name: "FK_Sector_1_Gym_GymId",
                         column: x => x.GymId,
-                        principalTable: "Gyms",
+                        principalTable: "Gym",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -99,7 +99,6 @@ namespace GymApp.Migrations
                     DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     PassId = table.Column<Guid>(type: "uuid", nullable: false),
                     ClientId = table.Column<Guid>(type: "uuid", nullable: false),
-                    refresh = table.Column<int>(type: "integer", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
@@ -130,9 +129,9 @@ namespace GymApp.Migrations
                 {
                     table.PrimaryKey("PK_GymReceptionist", x => new { x.GymsId, x.ReceptionistsId });
                     table.ForeignKey(
-                        name: "FK_GymReceptionist_Gyms_GymsId",
+                        name: "FK_GymReceptionist_Gym_GymsId",
                         column: x => x.GymsId,
-                        principalTable: "Gyms",
+                        principalTable: "Gym",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -265,7 +264,7 @@ namespace GymApp.Migrations
                 name: "Sector_1");
 
             migrationBuilder.DropTable(
-                name: "Gyms");
+                name: "Gym");
         }
     }
 }
