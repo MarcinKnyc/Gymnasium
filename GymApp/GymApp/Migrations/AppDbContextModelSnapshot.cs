@@ -35,14 +35,6 @@ namespace GymApp.Migrations
                     b.Property<Guid?>("OwnerId")
                         .HasColumnType("uuid");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("bytea");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("bytea");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("text");
@@ -53,7 +45,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Client_1", (string)null);
+                    b.ToTable("Client_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.Entrance", b =>
@@ -77,7 +69,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("SectorId");
 
-                    b.ToTable("Entrance_1", (string)null);
+                    b.ToTable("Entrance_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.EntranceEvent", b =>
@@ -104,7 +96,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("EntranceId");
 
-                    b.ToTable("EntranceEvent_1", (string)null);
+                    b.ToTable("EntranceEvent_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.Gym", b =>
@@ -130,7 +122,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gym", (string)null);
+                    b.ToTable("Gyms");
                 });
 
             modelBuilder.Entity("GymApp.Models.Pass", b =>
@@ -158,7 +150,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pass_1", (string)null);
+                    b.ToTable("Pass_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.PassBoughtEvent", b =>
@@ -188,7 +180,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("PassId");
 
-                    b.ToTable("PassBoughtEvent_1", (string)null);
+                    b.ToTable("PassBoughtEvent_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.Receptionist", b =>
@@ -204,17 +196,13 @@ namespace GymApp.Migrations
                     b.Property<Guid?>("OwnerId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Receptionist_1", (string)null);
+                    b.ToTable("Receptionist_1");
                 });
 
             modelBuilder.Entity("GymApp.Models.Sector", b =>
@@ -237,7 +225,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("GymId");
 
-                    b.ToTable("Sector_1", (string)null);
+                    b.ToTable("Sector_1");
                 });
 
             modelBuilder.Entity("GymReceptionist", b =>
@@ -252,7 +240,7 @@ namespace GymApp.Migrations
 
                     b.HasIndex("ReceptionistsId");
 
-                    b.ToTable("GymReceptionist", (string)null);
+                    b.ToTable("GymReceptionist");
                 });
 
             modelBuilder.Entity("GymApp.Models.Entrance", b =>

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GymApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230417163836_database set")]
-    partial class databaseset
+    [Migration("20230530121902_newDb")]
+    partial class newDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,7 +125,7 @@ namespace GymApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Gym");
+                    b.ToTable("Gyms");
                 });
 
             modelBuilder.Entity("GymApp.Models.Pass", b =>
@@ -173,6 +173,9 @@ namespace GymApp.Migrations
 
                     b.Property<Guid>("PassId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("refresh")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
