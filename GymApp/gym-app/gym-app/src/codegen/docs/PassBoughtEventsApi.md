@@ -4,11 +4,99 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut**](PassBoughtEventsApi.md#apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut) | **PUT** /api/PassBoughtEvents/DeactivatePass/{passBoughtEventId} | 
+[**apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut**](PassBoughtEventsApi.md#apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut) | **PUT** /api/PassBoughtEvents/ExtendPassValidity/{passBoughtEventId} | 
 [**apiPassBoughtEventsGet**](PassBoughtEventsApi.md#apiPassBoughtEventsGet) | **GET** /api/PassBoughtEvents | 
+[**apiPassBoughtEventsGetActivePassesClientIdGet**](PassBoughtEventsApi.md#apiPassBoughtEventsGetActivePassesClientIdGet) | **GET** /api/PassBoughtEvents/GetActivePasses/{clientId} | 
 [**apiPassBoughtEventsIdDelete**](PassBoughtEventsApi.md#apiPassBoughtEventsIdDelete) | **DELETE** /api/PassBoughtEvents/{id} | 
 [**apiPassBoughtEventsIdGet**](PassBoughtEventsApi.md#apiPassBoughtEventsIdGet) | **GET** /api/PassBoughtEvents/{id} | 
 [**apiPassBoughtEventsIdPut**](PassBoughtEventsApi.md#apiPassBoughtEventsIdPut) | **PUT** /api/PassBoughtEvents/{id} | 
 [**apiPassBoughtEventsPost**](PassBoughtEventsApi.md#apiPassBoughtEventsPost) | **POST** /api/PassBoughtEvents | 
+
+<a name="apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut"></a>
+# **apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut**
+> apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(passBoughtEventId)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.PassBoughtEventsApi();
+let passBoughtEventId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+
+apiInstance.apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(passBoughtEventId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **passBoughtEventId** | [**String**](.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut"></a>
+# **apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut**
+> apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(passBoughtEventId, opts)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.PassBoughtEventsApi();
+let passBoughtEventId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+let opts = { 
+  'extension': 56 // Number | 
+};
+apiInstance.apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(passBoughtEventId, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **passBoughtEventId** | [**String**](.md)|  | 
+ **extension** | **Number**|  | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 <a name="apiPassBoughtEventsGet"></a>
 # **apiPassBoughtEventsGet**
@@ -45,6 +133,47 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+<a name="apiPassBoughtEventsGetActivePassesClientIdGet"></a>
+# **apiPassBoughtEventsGetActivePassesClientIdGet**
+> apiPassBoughtEventsGetActivePassesClientIdGet(clientId)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.PassBoughtEventsApi();
+let clientId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+
+apiInstance.apiPassBoughtEventsGetActivePassesClientIdGet(clientId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | [**String**](.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 <a name="apiPassBoughtEventsIdDelete"></a>
 # **apiPassBoughtEventsIdDelete**

@@ -13,18 +13,18 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-import {WeatherForecast} from '../model/WeatherForecast';
+import {EmailDto} from '../model/EmailDto';
 
 /**
-* WeatherForecast service.
-* @module api/WeatherForecastApi
+* Email service.
+* @module api/EmailApi
 * @version 1.0
 */
-export class WeatherForecastApi {
+export class EmailApi {
 
     /**
-    * Constructs a new WeatherForecastApi. 
-    * @alias module:api/WeatherForecastApi
+    * Constructs a new EmailApi. 
+    * @alias module:api/EmailApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -35,20 +35,21 @@ export class WeatherForecastApi {
     }
 
     /**
-     * Callback function to receive the result of the getWeatherForecast operation.
-     * @callback moduleapi/WeatherForecastApi~getWeatherForecastCallback
+     * Callback function to receive the result of the apiEmailPost operation.
+     * @callback moduleapi/EmailApi~apiEmailPostCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/WeatherForecast>{ data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * @param {module:api/WeatherForecastApi~getWeatherForecastCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     * @param {Object} opts Optional parameters
+     * @param {module:model/EmailDto} opts.body 
+     * @param {module:api/EmailApi~apiEmailPostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    getWeatherForecast(callback) {
-      
-      let postBody = null;
+    apiEmailPost(opts, callback) {
+      opts = opts || {};
+      let postBody = opts['body'];
 
       let pathParams = {
         
@@ -63,13 +64,13 @@ export class WeatherForecastApi {
         
       };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
-      let returnType = [WeatherForecast];
+      let authNames = [];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = [];
+      let returnType = null;
 
       return this.apiClient.callApi(
-        '/WeatherForecast', 'GET',
+        '/api/Email', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

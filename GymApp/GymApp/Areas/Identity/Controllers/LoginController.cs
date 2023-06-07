@@ -14,6 +14,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GymApp.Controllers
 {
@@ -26,7 +29,7 @@ namespace GymApp.Controllers
         private readonly UserManager<GymUser> _userManager;
         private readonly IConfiguration _configuration;
 
-        public LoginController(
+       public LoginController(
             SignInManager<GymUser> signInManager, 
             ILogger<LoginController> logger,
             UserManager<GymUser> userManager,
@@ -39,6 +42,68 @@ namespace GymApp.Controllers
             _configuration = configuration;
         }
 
+        [Authorize]
+        [HttpPut("ChangeEmail")]
+        public async Task<IActionResult> ChangeEmail(string newEmail)
+        {
+            // Znajdź aktualnie zalogowanego użytkownika
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail);
+            var result = await _userManager.ChangeEmailAsync(user, newEmail, token);
+
+            if (result.Succeeded)
+            {
+                var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                result = await _userManager.ConfirmEmailAsync(user, emailConfirmationToken);
+                await _userManager.SetUserNameAsync(user, newEmail);
+                await _userManager.UpdateNormalizedUserNameAsync(user);
+                return Ok("Email changed successfully");
+            }
+
+            return BadRequest("Error changing email");
+        }
+
+        [Authorize]
+        [HttpPut("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(string oldPassword, string newPassword)
+        {
+            // Pobierz Id aktualnie zalogowanego użytkownika
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            // Znajdź użytkownika na podstawie Id
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+
+            if (result.Succeeded)
+            {
+                return Ok("Password changed successfully");
+            }
+
+            return BadRequest("Error changing password");
+        }
+
+
+
         [HttpPost]
         public async Task<IActionResult> Index(GymUserDAO userDAO)
         {
@@ -46,13 +111,9 @@ namespace GymApp.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
             var result = await _signInManager.PasswordSignInAsync(userDAO.email, userDAO.plainTextPassword, false, lockoutOnFailure: false);
-
             if (!result.Succeeded)
             {
-                if (result.IsNotAllowed)
-                    return Unauthorized("You must confirm your email first. Use link we sent you.");
-
-                return Unauthorized("Invalid login attempt.");
+                return Unauthorized("Invalid login attempt??.");
             }
 
             _logger.LogInformation("User logged in.");
@@ -65,20 +126,6 @@ namespace GymApp.Controllers
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = token.ValidTo
             });
-
-
-
-
-            //todo: implement lockout
-            //if (result.RequiresTwoFactor)
-            //{
-            //    //return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-            //}
-            //if (result.IsLockedOut)
-            //{
-            //    _logger.LogWarning("User account locked out.");
-            //    //return RedirectToPage("./Lockout");
-            //}
         }
 
         private async Task<JwtSecurityToken> generateJwtToken(GymUser user)

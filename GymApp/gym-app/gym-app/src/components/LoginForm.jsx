@@ -7,7 +7,6 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
     axios
       .post('http://localhost/api/Login', {
@@ -17,7 +16,8 @@ const LoginForm = () => {
       })
       .then((response) => {
         console.log(response)
-        const authToken = response.data
+        const authToken = response.data.token
+
         localStorage.setItem('authToken', authToken)
         window.location.replace('/')
       })
@@ -25,6 +25,8 @@ const LoginForm = () => {
         console.log(error)
       })
   }
+
+
 
   return (
     <div id="login">

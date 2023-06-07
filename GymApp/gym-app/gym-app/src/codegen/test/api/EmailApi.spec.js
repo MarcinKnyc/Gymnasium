@@ -29,28 +29,21 @@
   var instance;
 
   beforeEach(function() {
-    instance = new GymApp.WeatherForecastApi();
+    instance = new GymApp.EmailApi();
   });
 
   describe('(package)', function() {
-    describe('WeatherForecastApi', function() {
-      describe('getWeatherForecast', function() {
-        it('should call getWeatherForecast successfully', function(done) {
-          // TODO: uncomment getWeatherForecast call and complete the assertions
+    describe('EmailApi', function() {
+      describe('apiEmailPost', function() {
+        it('should call apiEmailPost successfully', function(done) {
+          // TODO: uncomment, update parameter values for apiEmailPost call
           /*
+          var opts = {};
 
-          instance.getWeatherForecast(function(error, data, response) {
+          instance.apiEmailPost(opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
-            }
-            // TODO: update response assertions
-            let dataCtr = data;
-            expect(dataCtr).to.be.an(Array);
-            expect(dataCtr).to.not.be.empty();
-            for (let p in dataCtr) {
-              let data = dataCtr[p];
-              expect(data).to.be.a(GymApp.WeatherForecast);
             }
 
             done();
