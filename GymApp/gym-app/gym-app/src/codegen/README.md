@@ -70,10 +70,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var GymApp = require('gym_app');
 
-var api = new GymApp.AuthorizationApi()
-var opts = { 
-  'body': new GymApp.ClientDto() // {ClientDto} 
-};
+var api = new GymApp.ClientsApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -81,7 +78,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.apiAuthorizationLoginPost(opts, callback);
+api.apiClientsGet(callback);
 ```
 
 ## Documentation for API Endpoints
@@ -90,13 +87,12 @@ All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GymApp.AuthorizationApi* | [**apiAuthorizationLoginPost**](docs/AuthorizationApi.md#apiAuthorizationLoginPost) | **POST** /api/Authorization/login | 
-*GymApp.AuthorizationApi* | [**apiAuthorizationRegisterClientPost**](docs/AuthorizationApi.md#apiAuthorizationRegisterClientPost) | **POST** /api/Authorization/registerClient | 
 *GymApp.ClientsApi* | [**apiClientsGet**](docs/ClientsApi.md#apiClientsGet) | **GET** /api/Clients | 
 *GymApp.ClientsApi* | [**apiClientsIdDelete**](docs/ClientsApi.md#apiClientsIdDelete) | **DELETE** /api/Clients/{id} | 
 *GymApp.ClientsApi* | [**apiClientsIdGet**](docs/ClientsApi.md#apiClientsIdGet) | **GET** /api/Clients/{id} | 
 *GymApp.ClientsApi* | [**apiClientsIdPut**](docs/ClientsApi.md#apiClientsIdPut) | **PUT** /api/Clients/{id} | 
 *GymApp.ClientsApi* | [**apiClientsPost**](docs/ClientsApi.md#apiClientsPost) | **POST** /api/Clients | 
+*GymApp.EmailApi* | [**apiEmailPost**](docs/EmailApi.md#apiEmailPost) | **POST** /api/Email | 
 *GymApp.EntranceEventsApi* | [**apiEntranceEventsGet**](docs/EntranceEventsApi.md#apiEntranceEventsGet) | **GET** /api/EntranceEvents | 
 *GymApp.EntranceEventsApi* | [**apiEntranceEventsIdDelete**](docs/EntranceEventsApi.md#apiEntranceEventsIdDelete) | **DELETE** /api/EntranceEvents/{id} | 
 *GymApp.EntranceEventsApi* | [**apiEntranceEventsIdGet**](docs/EntranceEventsApi.md#apiEntranceEventsIdGet) | **GET** /api/EntranceEvents/{id} | 
@@ -112,7 +108,13 @@ Class | Method | HTTP request | Description
 *GymApp.GymsApi* | [**apiGymsIdGet**](docs/GymsApi.md#apiGymsIdGet) | **GET** /api/Gyms/{id} | 
 *GymApp.GymsApi* | [**apiGymsIdPut**](docs/GymsApi.md#apiGymsIdPut) | **PUT** /api/Gyms/{id} | 
 *GymApp.GymsApi* | [**apiGymsPost**](docs/GymsApi.md#apiGymsPost) | **POST** /api/Gyms | 
+*GymApp.LoginApi* | [**apiLoginChangeEmailPut**](docs/LoginApi.md#apiLoginChangeEmailPut) | **PUT** /api/Login/ChangeEmail | 
+*GymApp.LoginApi* | [**apiLoginChangePasswordPut**](docs/LoginApi.md#apiLoginChangePasswordPut) | **PUT** /api/Login/ChangePassword | 
+*GymApp.LoginApi* | [**apiLoginPost**](docs/LoginApi.md#apiLoginPost) | **POST** /api/Login | 
+*GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut) | **PUT** /api/PassBoughtEvents/DeactivatePass/{passBoughtEventId} | 
+*GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut) | **PUT** /api/PassBoughtEvents/ExtendPassValidity/{passBoughtEventId} | 
 *GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsGet**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsGet) | **GET** /api/PassBoughtEvents | 
+*GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsGetActivePassesClientIdGet**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsGetActivePassesClientIdGet) | **GET** /api/PassBoughtEvents/GetActivePasses/{clientId} | 
 *GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsIdDelete**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsIdDelete) | **DELETE** /api/PassBoughtEvents/{id} | 
 *GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsIdGet**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsIdGet) | **GET** /api/PassBoughtEvents/{id} | 
 *GymApp.PassBoughtEventsApi* | [**apiPassBoughtEventsIdPut**](docs/PassBoughtEventsApi.md#apiPassBoughtEventsIdPut) | **PUT** /api/PassBoughtEvents/{id} | 
@@ -127,6 +129,10 @@ Class | Method | HTTP request | Description
 *GymApp.ReceptionistsApi* | [**apiReceptionistsIdGet**](docs/ReceptionistsApi.md#apiReceptionistsIdGet) | **GET** /api/Receptionists/{id} | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsIdPut**](docs/ReceptionistsApi.md#apiReceptionistsIdPut) | **PUT** /api/Receptionists/{id} | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsPost**](docs/ReceptionistsApi.md#apiReceptionistsPost) | **POST** /api/Receptionists | 
+*GymApp.RegisterApi* | [**apiRegisterAddRolePost**](docs/RegisterApi.md#apiRegisterAddRolePost) | **POST** /api/Register/AddRole | 
+*GymApp.RegisterApi* | [**apiRegisterAddRoleToSystemPost**](docs/RegisterApi.md#apiRegisterAddRoleToSystemPost) | **POST** /api/Register/AddRoleToSystem | 
+*GymApp.RegisterApi* | [**apiRegisterConfirmEmailPost**](docs/RegisterApi.md#apiRegisterConfirmEmailPost) | **POST** /api/Register/ConfirmEmail | 
+*GymApp.RegisterApi* | [**apiRegisterPost**](docs/RegisterApi.md#apiRegisterPost) | **POST** /api/Register | 
 *GymApp.SectorsApi* | [**apiSectorsGet**](docs/SectorsApi.md#apiSectorsGet) | **GET** /api/Sectors | 
 *GymApp.SectorsApi* | [**apiSectorsIdDelete**](docs/SectorsApi.md#apiSectorsIdDelete) | **DELETE** /api/Sectors/{id} | 
 *GymApp.SectorsApi* | [**apiSectorsIdGet**](docs/SectorsApi.md#apiSectorsIdGet) | **GET** /api/Sectors/{id} | 
@@ -137,10 +143,11 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [GymApp.Client](docs/Client.md)
- - [GymApp.ClientDto](docs/ClientDto.md)
+ - [GymApp.EmailDto](docs/EmailDto.md)
  - [GymApp.Entrance](docs/Entrance.md)
  - [GymApp.EntranceEvent](docs/EntranceEvent.md)
  - [GymApp.Gym](docs/Gym.md)
+ - [GymApp.GymUserDAO](docs/GymUserDAO.md)
  - [GymApp.Pass](docs/Pass.md)
  - [GymApp.PassBoughtEvent](docs/PassBoughtEvent.md)
  - [GymApp.Receptionist](docs/Receptionist.md)

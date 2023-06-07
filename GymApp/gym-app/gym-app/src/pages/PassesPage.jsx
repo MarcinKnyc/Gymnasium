@@ -71,19 +71,20 @@ const PassesPage = ({ apiClient }) => {
 
   //SAVED FOR THE FUTURE, HOW TO GET DATA WITH AUTH TOKEN
 
-  // apiClient.authentications.oauth2.type = 'oauth2'
-  // apiClient.authentications.oauth2.accessToken = storedAuthToken
+   //apiClient.authentications.oauth2.type = 'oauth2'
+   //apiClient.authentications.oauth2.accessToken = storedAuthToken
 
-  // const request = weatherForecastApi.getWeatherForecast((error, data) => {
+   //const request = weatherForecastApi.getWeatherForecast((error, data) => {
   //   if (error) {
   //     console.error('Error fetching weather forecast:', error)
   //     return
   //   }
   //   setWeatherForecastData(data)
   // })
-  // const authNames = ['oauth2']
-  // apiClient.applyAuthToRequest(request, authNames)
+   //const authNames = ['oauth2']
+   //apiClient.applyAuthToRequest(request, authNames)
 
+  
   useEffect(() => {
     passesApi.apiPassesGet((error, data) => {
       if (error) {
