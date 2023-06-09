@@ -56,14 +56,6 @@ const RegisterForm = () => {
       setIsConfirmed(true)
     })
   }
-  // <div id="login">
-  //   <h1>Konto zostało pomyślnie utworzone.</h1>
-  //   <a href="login">
-  //     <button type="button" className="header-btn">
-  //       Zaloguj się
-  //     </button>
-  //   </a>
-  // </div>
   return isRegistered ? (
     isConfirmed ? (
       <div id="login">
