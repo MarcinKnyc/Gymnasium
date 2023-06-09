@@ -15,18 +15,15 @@ const LoginForm = () => {
         userRoles: ['user'],
       })
       .then((response) => {
-        console.log(response)
         const authToken = response.data.token
 
         localStorage.setItem('authToken', authToken)
         window.location.replace('/')
       })
       .catch((error) => {
-        console.log(error)
+        console.error(error)
       })
   }
-
-
 
   return (
     <div id="login">

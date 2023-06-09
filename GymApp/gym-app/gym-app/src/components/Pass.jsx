@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Pass = ({ id, handleEdit, handleDelete, item }) => {
   return (
@@ -13,6 +14,9 @@ const Pass = ({ id, handleEdit, handleDelete, item }) => {
         <button type="button" onClick={(e) => handleDelete(id)}>
           DELETE
         </button>
+        <Link to={`/Passes/Sectors/${id}`}>
+          <button type="button">BUY</button>
+        </Link>
       </td>
     </tr>
   )

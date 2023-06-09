@@ -17,15 +17,15 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
     setEmail(e.target.value)
   }
 
-  const handleNewPasswordChange = (e) =>{
+  const handleNewPasswordChange = (e) => {
     setNewPassword(e.target.value)
   }
 
-  const handleOldPasswordChange = (e) =>{
+  const handleOldPasswordChange = (e) => {
     setOldPassword(e.target.value)
   }
 
-  const handleRepeatNewPasswordChange = (e) =>{
+  const handleRepeatNewPasswordChange = (e) => {
     setRepeatNewPassword(e.target.value)
   }
 
@@ -42,17 +42,17 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
     }
 
     let optsEmail = {
-      newEmail: email
+      newEmail: email,
     }
-    
+
     apiClient.authentications.oauth2.type = 'oauth2'
     apiClient.authentications.oauth2.accessToken = storedAuthToken
-    
+
     loginApi.apiLoginChangeEmailPut(optsEmail, (error, data, response) => {
       if (error) {
         console.error(error)
       } else {
-        console.log('Email changed successfully.')
+        // console.log('Email changed successfully.')
         setEmail('')
         setEmailChangeSuccess(true)
         setTimeout(() => {
@@ -63,7 +63,8 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
   }
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    const re =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
     return re.test(password)
   }
 
@@ -88,26 +89,28 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
 
     let optsPassword = {
       oldPassword: oldPassword,
-      newPassword: newPassword
+      newPassword: newPassword,
     }
-    
+
     apiClient.authentications.oauth2.type = 'oauth2'
     apiClient.authentications.oauth2.accessToken = storedAuthToken
-    
-    loginApi.apiLoginChangePasswordPut(optsPassword, (error, data, response) => {
-      if (error) {
-        console.error(error)
-      } else {
-        console.log('Password changed successfully.')
-        setNewPassword('')
-        setOldPassword('')
-        setRepeatNewPassword('')
-        setPasswordChangeSuccess(true)
-        setTimeout(() => {
-          setPasswordChangeSuccess(false)
-        }, 3000)
+
+    loginApi.apiLoginChangePasswordPut(
+      optsPassword,
+      (error, data, response) => {
+        if (error) {
+          console.error(error)
+        } else {
+          setNewPassword('')
+          setOldPassword('')
+          setRepeatNewPassword('')
+          setPasswordChangeSuccess(true)
+          setTimeout(() => {
+            setPasswordChangeSuccess(false)
+          }, 3000)
+        }
       }
-    })
+    )
   }
 
   return (
@@ -122,8 +125,12 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
           onChange={handleEmailChange}
         />
         <input type="submit" value="Zmien adres E-mail" />
-        {emailChangeSuccess && <p style={{color: 'white'}}>Email został poprawnie zmieniony</p>}
-        {emailInvalid && <p style={{color: 'white'}}>Adres email musi zawierać '@'</p>}
+        {emailChangeSuccess && (
+          <p style={{ color: 'white' }}>Email został poprawnie zmieniony</p>
+        )}
+        {emailInvalid && (
+          <p style={{ color: 'white' }}>Adres email musi zawierać '@'</p>
+        )}
       </form>
       <form action="" onSubmit={handlePasswordSubmit}>
         <input
@@ -148,13 +155,21 @@ const MyProfilePage = ({ apiClient, storedAuthToken }) => {
           onChange={handleRepeatNewPasswordChange}
         />
         <input type="submit" value="Zmien haslo" />
-        {passwordChangeSuccess && <p style={{color: 'white'}}>Hasło zostało poprawnie zmienione</p>}
-        {passwordMismatch && <p style={{color: 'white'}}>Hasła się nie powtarzają</p>}
-        {passwordInvalid && <p style={{color: 'white'}}>Hasło musi zawierać 8 znaków, 1 dużą literę, 1 cyfrę i 1 znak specjalny</p>}
+        {passwordChangeSuccess && (
+          <p style={{ color: 'white' }}>Hasło zostało poprawnie zmienione</p>
+        )}
+        {passwordMismatch && (
+          <p style={{ color: 'white' }}>Hasła się nie powtarzają</p>
+        )}
+        {passwordInvalid && (
+          <p style={{ color: 'white' }}>
+            Hasło musi zawierać 8 znaków, 1 dużą literę, 1 cyfrę i 1 znak
+            specjalny
+          </p>
+        )}
       </form>
     </div>
   )
 }
 
 export default MyProfilePage
-

@@ -17,11 +17,10 @@ const RegisterForm = () => {
       plainTextPassword: plainTextPassword,
       userRoles: ['user'],
     }
-    //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
+
     axios
       .post('http://localhost/api/Register', userData)
       .then((response) => {
-        console.log(typeof response.data)
         setIsRegistered(true)
         const emailData = {
           to: email,
@@ -30,9 +29,7 @@ const RegisterForm = () => {
         }
         axios
           .post('http://localhost/api/Email', emailData)
-          .then((responseEmail) => {
-            console.log(responseEmail.data)
-          })
+          .then((responseEmail) => {})
           .catch((error) => {
             console.error(error)
           })
@@ -52,7 +49,6 @@ const RegisterForm = () => {
     const requestUrl = `${apiUrl}?${queryString}`
 
     axios.post(requestUrl).then((response) => {
-      console.log(typeof response.data)
       setIsConfirmed(true)
     })
   }

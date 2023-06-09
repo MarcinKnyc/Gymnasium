@@ -39,7 +39,7 @@ const PassesPage = ({ apiClient }) => {
       if (error) {
         console.error(error)
       } else {
-        console.log('API called successfully. Returned data: ' + data)
+        // console.log('API called successfully. Returned data: ' + data)
       }
     })
   }
@@ -75,7 +75,7 @@ const PassesPage = ({ apiClient }) => {
       if (error) {
         console.error(error)
       } else {
-        console.log('API called successfully.')
+        // console.log('API called successfully.')
       }
     })
 
@@ -90,26 +90,11 @@ const PassesPage = ({ apiClient }) => {
       if (error) {
         console.error(error)
       } else {
-        console.log('API called successfully.')
+        // console.log('API called successfully.')
       }
     })
     setData(newPasses)
   }
-
-  //SAVED FOR THE FUTURE, HOW TO GET DATA WITH AUTH TOKEN
-
-  //apiClient.authentications.oauth2.type = 'oauth2'
-  //apiClient.authentications.oauth2.accessToken = storedAuthToken
-
-  //const request = weatherForecastApi.getWeatherForecast((error, data) => {
-  //   if (error) {
-  //     console.error('Error fetching weather forecast:', error)
-  //     return
-  //   }
-  //   setWeatherForecastData(data)
-  // })
-  //const authNames = ['oauth2']
-  //apiClient.applyAuthToRequest(request, authNames)
 
   useEffect(() => {
     passesApi.apiPassesGet((error, data) => {
@@ -117,7 +102,6 @@ const PassesPage = ({ apiClient }) => {
         console.error('Error fetching data:', error)
         return
       }
-      console.log(data)
       setData(data)
     })
   }, [])
