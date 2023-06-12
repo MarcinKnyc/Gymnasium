@@ -22,8 +22,27 @@ const ClientsPage = ({ apiClient }) => {
 
   const handleAddFormSubmit = (e) => {
     e.preventDefault()
-    const client = { id: uuid(), ownerId: uuid(), ...addFormData }
+    const client = {
+      id: uuid(),
+      ownerId: uuid(),
+      ...addFormData,
+      passBoughtEvents: [],
+      entranceEvents: [],
+    }
     const newData = [...data, client]
+
+    let opts = {
+      body: client, // Client |
+    }
+
+    clientsApi.apiClientsPost(opts, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully. Returned data: ' + data)
+      }
+    })
+
     setData(newData)
   }
 
@@ -49,12 +68,32 @@ const ClientsPage = ({ apiClient }) => {
     const newData = [...data]
     const index = data.findIndex((client) => client.id === editClientId)
     newData[index] = editedClient
+
+    let opts = {
+      body: editedClient, // Client |
+    }
+    clientsApi.apiClientsIdPut(editClientId, opts, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
+      }
+    })
+
     setData(newData)
     setEditClientId(null)
   }
 
   const handleDelete = (clientId) => {
     const newClients = data.filter((client) => client.id !== clientId)
+
+    clientsApi.apiClientsIdDelete(clientId, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
+      }
+    })
     setData(newClients)
   }
 

@@ -627,3 +627,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #ff1414;
 }
+
+.error {
+  color: white;
+}

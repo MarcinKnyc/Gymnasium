@@ -4,10 +4,11 @@ import React, { useState } from 'react'
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [plainTextPassword, setPlainTextPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //TODO WITH CODEGEN WHEN DATABASE WILL BE CHANGED
+
     axios
       .post('http://localhost/api/Login', {
         email: email,
@@ -15,22 +16,20 @@ const LoginForm = () => {
         userRoles: ['user'],
       })
       .then((response) => {
-        console.log(response)
         const authToken = response.data.token
-
         localStorage.setItem('authToken', authToken)
         window.location.replace('/')
       })
       .catch((error) => {
-        console.log(error)
+        setError('Nieprawidłowy adres email lub hasło')
+        console.error(error)
       })
   }
-
-
 
   return (
     <div id="login">
       <h1>Zaloguj się</h1>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form action="" onSubmit={handleSubmit}>
         <input
           type="text"

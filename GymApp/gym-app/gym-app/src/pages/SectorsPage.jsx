@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import Receptionist from '../components/Receptionist'
-import EditableReceptionist from '../components/EditableReceptionist'
 import { v4 as uuid } from 'uuid'
-import { ReceptionistsApi } from '../codegen/src/api/ReceptionistsApi'
+import { SectorsApi } from '../codegen/src/api/SectorsApi'
+import EditableSector from '../components/EditableSector'
+import Sector from '../components/Sector'
+import { useParams } from 'react-router-dom'
 
-const ReceptionistsPage = ({ apiClient }) => {
-  const receptionistsApi = new ReceptionistsApi(apiClient)
+const SectorsPage = ({ apiClient }) => {
+  const sectorsApi = new SectorsApi(apiClient)
+
   const [data, setData] = useState([])
-  const [editReceptionistId, setEditReceptionistId] = useState(null)
+  const [editSectorsId, setEditSectorsId] = useState(null)
   const [addFormData, setAddFormData] = useState(data[0])
   const [editFormData, setEditFormData] = useState(data[0])
+  const { id } = useParams()
 
   const handleAddFormChange = (e) => {
     e.preventDefault()
@@ -22,19 +25,19 @@ const ReceptionistsPage = ({ apiClient }) => {
 
   const handleAddFormSubmit = (e) => {
     e.preventDefault()
-    const receptionist = {
+    const sector = {
       id: uuid(),
       ownerId: uuid(),
+      gymId: id,
+      entrances: [],
       ...addFormData,
-      gyms: [],
     }
-    const newData = [...data, receptionist]
+    const newData = [...data, sector]
 
     let opts = {
-      body: receptionist, // Receptionist |
+      body: sector, // Sector |
     }
-
-    receptionistsApi.apiReceptionistsPost(opts, (error, data, response) => {
+    sectorsApi.apiSectorsPost(opts, (error, data, response) => {
       if (error) {
         console.error(error)
       } else {
@@ -47,7 +50,7 @@ const ReceptionistsPage = ({ apiClient }) => {
 
   const handleEdit = (e, id, item) => {
     e.preventDefault()
-    setEditReceptionistId(id)
+    setEditSectorsId(id)
     const formValues = { ...item }
     setEditFormData(formValues)
   }
@@ -63,52 +66,40 @@ const ReceptionistsPage = ({ apiClient }) => {
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault()
-    const editedReceptionist = { ...editFormData, id: editReceptionistId }
+    const editedSector = { ...editFormData, id: editSectorsId }
     const newData = [...data]
-    const index = data.findIndex(
-      (receptionist) => receptionist.id === editReceptionistId
-    )
-    newData[index] = editedReceptionist
+    const index = data.findIndex((sectors) => sectors.id === editSectorsId)
+    newData[index] = editedSector
 
     let opts = {
-      body: editedReceptionist, // Receptionist |
+      body: editedSector, // Sector |
     }
-    receptionistsApi.apiReceptionistsIdPut(
-      editReceptionistId,
-      opts,
-      (error, data, response) => {
-        if (error) {
-          console.error(error)
-        } else {
-          // console.log('API called successfully.')
-        }
+    sectorsApi.apiSectorsIdPut(editSectorsId, opts, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
       }
-    )
-
+    })
     setData(newData)
-    setEditReceptionistId(null)
+    setEditSectorsId(null)
   }
 
-  const handleDelete = (receptionistId) => {
-    const newReceptionist = data.filter(
-      (receptionist) => receptionist.id !== receptionistId
-    )
+  const handleDelete = (sectorId) => {
+    const newSector = data.filter((sector) => sector.id !== sectorId)
 
-    receptionistsApi.apiReceptionistsIdDelete(
-      receptionistId,
-      (error, data, response) => {
-        if (error) {
-          console.error(error)
-        } else {
-          // console.log('API called successfully.')
-        }
+    sectorsApi.apiSectorsIdDelete(sectorId, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
       }
-    )
-    setData(newReceptionist)
+    })
+    setData(newSector)
   }
 
   useEffect(() => {
-    receptionistsApi.apiReceptionistsGet((error, data) => {
+    sectorsApi.apiSectorsIdGet(id, (error, data, response) => {
       if (error) {
         console.error('Error fetching data:', error)
         return
@@ -120,7 +111,7 @@ const ReceptionistsPage = ({ apiClient }) => {
   return (
     <div className="table-container">
       <form onSubmit={handleAddFormSubmit}>
-        <span className="title">Add Receptionist</span>
+        <span className="title">Add Sector</span>
         {data[0] &&
           Object.entries(data[0]).map(([key, value]) => {
             if (key !== 'id' && key !== 'ownerId')
@@ -152,13 +143,13 @@ const ReceptionistsPage = ({ apiClient }) => {
             {data.map((item) => {
               return (
                 <React.Fragment key={item.id}>
-                  {editReceptionistId === item.id ? (
-                    <EditableReceptionist
+                  {editSectorsId === item.id ? (
+                    <EditableSector
                       editFormData={editFormData}
                       handleEditFormChange={handleEditFormChange}
                     />
                   ) : (
-                    <Receptionist
+                    <Sector
                       {...item}
                       handleEdit={handleEdit}
                       handleDelete={handleDelete}
@@ -175,4 +166,4 @@ const ReceptionistsPage = ({ apiClient }) => {
   )
 }
 
-export default ReceptionistsPage
+export default SectorsPage

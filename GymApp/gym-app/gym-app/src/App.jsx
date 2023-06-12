@@ -14,6 +14,8 @@ import ReceptionistsPage from './pages/Receptionists'
 import AdminsPage from './pages/AdminsPage'
 import GymsPage from './pages/GymsPage'
 import MyProfilePage from './pages/MyProfilePage'
+import SectorsPage from './pages/SectorsPage'
+import CartPage from './pages/CartPage'
 
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
@@ -28,9 +30,8 @@ function App() {
   const clearStorage = () => {
     localStorage.removeItem('authToken')
     setStoredAuthToken(null)
-    window.location.href = "/"
+    window.location.href = '/'
   }
-
 
   return (
     <div className="App">
@@ -49,16 +50,28 @@ function App() {
             path={'Clients'}
             element={<ClientsPage apiClient={apiClient} />}
           />
-          <Route 
-          path={'MyProfile'}
-           element={<MyProfilePage apiClient={apiClient} storedAuthToken={storedAuthToken} />} 
+          <Route
+            path={'MyProfile'}
+            element={
+              <MyProfilePage
+                apiClient={apiClient}
+                storedAuthToken={storedAuthToken}
+              />
+            }
           />
           <Route path={'Gyms'} element={<GymsPage apiClient={apiClient} />} />
           <Route
             path={'Receptionists'}
             element={<ReceptionistsPage apiClient={apiClient} />}
           />
-
+          <Route
+            path={'/Gyms/:id/Sectors'}
+            element={<SectorsPage apiClient={apiClient} />}
+          />
+          <Route
+            path={'/Passes/Buy/:id'}
+            element={<CartPage apiClient={apiClient} />}
+          />
         </Routes>
         <Footer />
       </Router>

@@ -22,8 +22,25 @@ const GymsPage = ({ apiClient }) => {
 
   const handleAddFormSubmit = (e) => {
     e.preventDefault()
-    const gym = { id: uuid(), ownerId: uuid(), ...addFormData }
+    const gym = {
+      id: uuid(),
+      ownerId: uuid(),
+      ...addFormData,
+      sectors: [],
+      receptionists: [],
+    }
     const newData = [...data, gym]
+
+    let opts = {
+      body: gym, // Gym |
+    }
+    gymsApi.apiGymsPost(opts, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully. Returned data: ' + data)
+      }
+    })
     setData(newData)
   }
 
@@ -49,12 +66,32 @@ const GymsPage = ({ apiClient }) => {
     const newData = [...data]
     const index = data.findIndex((gym) => gym.id === editGymId)
     newData[index] = editedGym
+
+    let opts = {
+      body: editedGym, // Gym |
+    }
+    gymsApi.apiGymsIdPut(editGymId, opts, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
+      }
+    })
+
     setData(newData)
     setEditGymId(null)
   }
 
   const handleDelete = (gymId) => {
     const newGyms = data.filter((gym) => gym.id !== gymId)
+
+    gymsApi.apiGymsIdDelete(gymId, (error, data, response) => {
+      if (error) {
+        console.error(error)
+      } else {
+        // console.log('API called successfully.')
+      }
+    })
     setData(newGyms)
   }
 
