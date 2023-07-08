@@ -1,19 +1,5 @@
 export const navItems = [
-  {
-    id: 1,
-    text: 'Opinie',
-    url: 'reviews',
-  },
-  {
-    id: 2,
-    text: 'Trenerzy',
-    url: 'trainers',
-  },
-  {
-    id: 3,
-    text: 'Kontakt ',
-    url: 'contact',
-  },
+
   {
     id: 4,
     text: 'Karnety',
@@ -33,11 +19,6 @@ export const navItems = [
     id: 7,
     text: 'Recepcjoniści',
     url: 'Receptionists',
-  },
-  {
-    id: 8,
-    text: 'Admini',
-    url: 'Admins',
   },
 ]
 

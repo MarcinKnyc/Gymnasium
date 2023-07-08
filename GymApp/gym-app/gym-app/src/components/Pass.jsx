@@ -5,6 +5,7 @@ const Pass = ({ id, handleEdit, handleDelete, item }) => {
   return (
     <tr key={id}>
       {Object.entries(item).map(([key, value]) => {
+        if (key !== 'id' && key !== 'ownerId' && key != 'passBoughtEvents' && key != 'entranceEvents')
         return <td key={key}>{value}</td>
       })}
       <td>

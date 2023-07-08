@@ -23,49 +23,50 @@ namespace GymApp.Controllers
 
         // get all the active passes
         [HttpGet("GetActivePasses/{clientId}")]
-        public IActionResult GetActivePasses(Guid clientId)
+        public async Task<ActionResult<IEnumerable<PassBoughtEvent>>> GetActivePasses(Guid clientId)
         {
-            var activePassBoughtEvents = _context.Client_1
+            var activePassBoughtEvents = await _context.Client_1
                 .Where(c => c.Id == clientId)
                 .SelectMany(c => c.PassBoughtEvents)
                 .Include(pbe => pbe.Pass)
                 .Where(pbe => DateTime.UtcNow < pbe.DateTime.AddDays(pbe.Pass.Duration * pbe.refresh))
-                .ToList();
+                .ToListAsync();
 
             return Ok(activePassBoughtEvents);
         }
 
 
+
         //reseting the Pass
         [HttpPut("DeactivatePass/{passBoughtEventId}")]
-        public IActionResult DeactivatePass(Guid passBoughtEventId)
+        public async Task<ActionResult<PassBoughtEvent>> DeactivatePass(Guid passBoughtEventId)        
         {
-            var passBoughtEvent = _context.PassBoughtEvent_1.FirstOrDefault(pbe => pbe.Id == passBoughtEventId);
+            var passBoughtEvent = await _context.PassBoughtEvent_1.FirstOrDefaultAsync(pbe => pbe.Id == passBoughtEventId);
             if (passBoughtEvent == null)
             {
                 return NotFound();
             }
 
             passBoughtEvent.refresh = 0;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(passBoughtEvent);
         }
 
         // Extend the pass validity
         [HttpPut("ExtendPassValidity/{passBoughtEventId}")]
-        public IActionResult ExtendPassValidity(Guid passBoughtEventId, int extension)
+        public async Task<ActionResult<PassBoughtEvent>> ExtendPassValidity(Guid passBoughtEventId, int extension)
         {
-            var passBoughtEvent = _context.PassBoughtEvent_1.FirstOrDefault(pbe => pbe.Id == passBoughtEventId);
+            var passBoughtEvent = await _context.PassBoughtEvent_1.FirstOrDefaultAsync(pbe => pbe.Id == passBoughtEventId);
             if (passBoughtEvent == null)
             {
                 return NotFound();
             }
 
             passBoughtEvent.refresh += extension;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(passBoughtEvent);
         }
 
         // GET: api/PassBoughtEvents

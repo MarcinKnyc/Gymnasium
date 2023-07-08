@@ -5,6 +5,7 @@ const Gym = ({ id, handleEdit, handleDelete, item }) => {
   return (
     <tr key={id}>
       {Object.entries(item).map(([key, value]) => {
+        if (key !== 'id' && key !== 'ownerId')
         return <td key={key}>{value}</td>
       })}
       <td>
