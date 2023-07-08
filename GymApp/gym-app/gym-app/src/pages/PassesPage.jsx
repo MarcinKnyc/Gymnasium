@@ -112,7 +112,7 @@ const PassesPage = ({ apiClient }) => {
         <span className="title">Add Pass</span>
         {data[0] &&
           Object.entries(data[0]).map(([key, value]) => {
-            if (key !== 'id' && key !== 'ownerId')
+            if (key !== 'id' && key !== 'ownerId' && key != 'passBoughtEvents' && key != 'entranceEvents')
               return (
                 <input
                   type="text"
@@ -132,6 +132,7 @@ const PassesPage = ({ apiClient }) => {
             <tr>
               {data[0] &&
                 Object.entries(data[0]).map(([key, value]) => {
+                  if (key !== 'id' && key !== 'ownerId' && key != 'passBoughtEvents' && key != 'entranceEvents')
                   return <th key={uuid()}>{key}</th>
                 })}
               <th>ACTIONS</th>
