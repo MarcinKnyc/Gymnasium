@@ -161,12 +161,47 @@ namespace GymApp.Controllers
 
             var result = await _userManager.AddToRoleAsync(user, roleName);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)            
             {
-                return Ok($"Role '{roleName}' added to user '{userEmail}'.");
+                return BadRequest("Failed to add role to user.");
+            }
+            
+            if ( roleName == "Receptionist" )
+            {
+                var receptionist = new Receptionist{
+                    Name = "Fill out details",
+                    Surname = "Fill out details",
+                    OwnerId = new Guid(user.Id)
+                };
+                _context.Receptionist_1.Add(receptionist);
+                await _context.SaveChangesAsync();
+                return Ok($"Role '{roleName}' added to user '{userEmail}'. A matching Receptionist has been added to db.");
+            }
+            return Ok($"Role '{roleName}' added to user '{userEmail}'.");
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> RemoveRole(string userEmail, string roleName)
+        {
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            if (user == null)
+            {
+                return NotFound($"User with email '{userEmail}' not found.");
             }
 
-            return BadRequest("Failed to add role to user.");
+            if (!await _roleManager.RoleExistsAsync(roleName))
+            {
+                return NotFound($"Role '{roleName}' not found.");
+            }
+
+            var result = await _userManager.RemoveFromRoleAsync(user, roleName);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Failed to remove role from user.");
+            }
+
+            return Ok($"Role '{roleName}' removed from user '{userEmail}'.");
         }
 
         [HttpPost("[action]")]
