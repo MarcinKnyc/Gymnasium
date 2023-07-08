@@ -631,3 +631,22 @@ tr:nth-child(odd) {
 .error {
   color: white;
 }
+
+.table-container h1,
+h2,
+h3 {
+  color: white;
+}
+
+.table-container-border {
+  border-radius: 20px;
+  border: 2px solid #8a0303;
+  padding: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.table-container-bought a {
+  text-decoration: underline;
+}

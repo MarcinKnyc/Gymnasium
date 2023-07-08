@@ -15,7 +15,7 @@ const Pass = ({ id, handleEdit, handleDelete, item }) => {
         <button type="button" onClick={(e) => handleDelete(id)}>
           DELETE
         </button>
-        <Link to={`/Passes/Sectors/${id}`}>
+        <Link to={`/Passes/Buy/${id}`}>
           <button type="button">BUY</button>
         </Link>
       </td>
