@@ -7,5 +7,4 @@ Name | Type | Description | Notes
 **ownerId** | **String** |  | [optional] 
 **sectorName** | **String** |  | [optional] 
 **gymId** | **String** |  | [optional] 
-**gym** | [**Gym**](Gym.md) |  | [optional] 
 **entrances** | [**[Entrance]**](Entrance.md) |  | [optional] 

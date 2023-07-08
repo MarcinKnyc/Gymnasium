@@ -5,6 +5,7 @@ All URIs are relative to */*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiClientsGet**](ClientsApi.md#apiClientsGet) | **GET** /api/Clients | 
+[**apiClientsGetByOwnerIdOwnerIdGet**](ClientsApi.md#apiClientsGetByOwnerIdOwnerIdGet) | **GET** /api/Clients/GetByOwnerId/{ownerId} | 
 [**apiClientsIdDelete**](ClientsApi.md#apiClientsIdDelete) | **DELETE** /api/Clients/{id} | 
 [**apiClientsIdGet**](ClientsApi.md#apiClientsIdGet) | **GET** /api/Clients/{id} | 
 [**apiClientsIdPut**](ClientsApi.md#apiClientsIdPut) | **PUT** /api/Clients/{id} | 
@@ -36,6 +37,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[Client]**](Client.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="apiClientsGetByOwnerIdOwnerIdGet"></a>
+# **apiClientsGetByOwnerIdOwnerIdGet**
+> Client apiClientsGetByOwnerIdOwnerIdGet(ownerId)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.ClientsApi();
+let ownerId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+
+apiInstance.apiClientsGetByOwnerIdOwnerIdGet(ownerId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ownerId** | [**String**](.md)|  | 
+
+### Return type
+
+[**Client**](Client.md)
 
 ### Authorization
 

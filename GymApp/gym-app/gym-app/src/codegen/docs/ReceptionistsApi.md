@@ -5,6 +5,7 @@ All URIs are relative to */*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiReceptionistsGet**](ReceptionistsApi.md#apiReceptionistsGet) | **GET** /api/Receptionists | 
+[**apiReceptionistsGetByOwnerIdOwnerIdGet**](ReceptionistsApi.md#apiReceptionistsGetByOwnerIdOwnerIdGet) | **GET** /api/Receptionists/GetByOwnerId/{ownerId} | 
 [**apiReceptionistsIdDelete**](ReceptionistsApi.md#apiReceptionistsIdDelete) | **DELETE** /api/Receptionists/{id} | 
 [**apiReceptionistsIdGet**](ReceptionistsApi.md#apiReceptionistsIdGet) | **GET** /api/Receptionists/{id} | 
 [**apiReceptionistsIdPut**](ReceptionistsApi.md#apiReceptionistsIdPut) | **PUT** /api/Receptionists/{id} | 
@@ -36,6 +37,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[Receptionist]**](Receptionist.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="apiReceptionistsGetByOwnerIdOwnerIdGet"></a>
+# **apiReceptionistsGetByOwnerIdOwnerIdGet**
+> Receptionist apiReceptionistsGetByOwnerIdOwnerIdGet(ownerId)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.ReceptionistsApi();
+let ownerId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+
+apiInstance.apiReceptionistsGetByOwnerIdOwnerIdGet(ownerId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ownerId** | [**String**](.md)|  | 
+
+### Return type
+
+[**Receptionist**](Receptionist.md)
 
 ### Authorization
 
