@@ -90,6 +90,9 @@ const Navbar = ({ storedAuthToken, clearStorage }) => {
                 <Link to="/MyProfile" style={{ color: 'white' }}>
                   <div className="dropdown-item">Mój profil</div>
                 </Link>
+                <Link to="/MyPasses" style={{ color: 'white' }}>
+                  <div className="dropdown-item">Moje karnety</div>
+                </Link>
                 <div
                   className="dropdown-item"
                   onClick={handleLogout}

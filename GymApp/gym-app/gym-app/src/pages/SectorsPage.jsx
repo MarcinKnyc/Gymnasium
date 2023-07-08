@@ -28,12 +28,14 @@ const SectorsPage = ({ apiClient }) => {
     const sector = {
       id: uuid(),
       ownerId: uuid(),
-      gymId: id,
-      entrances: [],
       ...addFormData,
+      gymId: id,
+      gym: undefined,
+      entrances: [],
     }
     const newData = [...data, sector]
 
+    console.log(sector)
     let opts = {
       body: sector, // Sector |
     }
@@ -99,12 +101,15 @@ const SectorsPage = ({ apiClient }) => {
   }
 
   useEffect(() => {
-    sectorsApi.apiSectorsIdGet(id, (error, data, response) => {
+    sectorsApi.apiSectorsGet((error, data, response) => {
       if (error) {
-        console.error('Error fetching data:', error)
-        return
+        console.error(error)
+      } else {
+        console.log(data)
+        const newData = data.filter((sector) => sector.gymId === id)
+        console.log(newData)
+        setData(newData)
       }
-      setData(data)
     })
   }, [])
 

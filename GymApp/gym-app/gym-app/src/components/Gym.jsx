@@ -14,7 +14,7 @@ const Gym = ({ id, handleEdit, handleDelete, item }) => {
         <button type="button" onClick={(e) => handleDelete(id)}>
           DELETE
         </button>
-        <Link to={`/Gyms/${id}/Sectors`}>
+        <Link to={`/Gyms/Sectors/${id}`}>
           <button type="button">SECTORS</button>
         </Link>
       </td>

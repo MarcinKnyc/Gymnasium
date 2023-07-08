@@ -16,6 +16,7 @@ import GymsPage from './pages/GymsPage'
 import MyProfilePage from './pages/MyProfilePage'
 import SectorsPage from './pages/SectorsPage'
 import CartPage from './pages/CartPage'
+import MyPassesPage from './pages/MyPassesPage'
 
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
@@ -59,13 +60,22 @@ function App() {
               />
             }
           />
+          <Route
+            path={'MyPasses'}
+            element={
+              <MyPassesPage
+                apiClient={apiClient}
+                storedAuthToken={storedAuthToken}
+              />
+            }
+          />
           <Route path={'Gyms'} element={<GymsPage apiClient={apiClient} />} />
           <Route
             path={'Receptionists'}
             element={<ReceptionistsPage apiClient={apiClient} />}
           />
           <Route
-            path={'/Gyms/:id/Sectors'}
+            path={'/Gyms/Sectors/:id'}
             element={<SectorsPage apiClient={apiClient} />}
           />
           <Route

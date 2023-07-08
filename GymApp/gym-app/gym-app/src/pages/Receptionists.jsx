@@ -123,7 +123,7 @@ const ReceptionistsPage = ({ apiClient }) => {
         <span className="title">Add Receptionist</span>
         {data[0] &&
           Object.entries(data[0]).map(([key, value]) => {
-            if (key !== 'id' && key !== 'ownerId')
+            if (key !== 'id' && key !== 'ownerId' && key !== 'gyms')
               return (
                 <input
                   type="text"
@@ -143,7 +143,8 @@ const ReceptionistsPage = ({ apiClient }) => {
             <tr>
               {data[0] &&
                 Object.entries(data[0]).map(([key, value]) => {
-                  return <th key={uuid()}>{key}</th>
+                  if (key !== 'id' && key !== 'ownerId' && key !== 'gyms')
+                    return <th key={uuid()}>{key}</th>
                 })}
               <th>ACTIONS</th>
             </tr>
