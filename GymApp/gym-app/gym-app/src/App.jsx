@@ -13,6 +13,7 @@ import ClientsPage from './pages/ClientsPage'
 import ReceptionistsPage from './pages/Receptionists'
 import AdminsPage from './pages/AdminsPage'
 import GymsPage from './pages/GymsPage'
+import VerifyCustomerPage from './pages/VerifyCustomerPage'
 import MyProfilePage from './pages/MyProfilePage'
 import SectorsPage from './pages/SectorsPage'
 import CartPage from './pages/CartPage'
@@ -70,6 +71,10 @@ function App() {
             }
           />
           <Route path={'Gyms'} element={<GymsPage apiClient={apiClient} />} />
+          <Route
+            path="/Gyms/Sectors/:sectorId/VerifyCustomer"
+            element={<VerifyCustomerPage apiClient={apiClient} />}
+          />
           <Route
             path={'Receptionists'}
             element={<ReceptionistsPage apiClient={apiClient} />}
