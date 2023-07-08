@@ -41,7 +41,7 @@ function App() {
         <Navbar storedAuthToken={storedAuthToken} clearStorage={clearStorage} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="login" element={<LoginPage apiClient={apiClient}/>} />
           <Route path={'/login/register'} element={<RegisterPage />} />
           <Route path={'register'} element={<RegisterPage />} />
           <Route
