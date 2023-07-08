@@ -143,6 +143,7 @@ const ReceptionistsPage = ({ apiClient }) => {
             <tr>
               {data[0] &&
                 Object.entries(data[0]).map(([key, value]) => {
+                  if (key !== 'id' && key !== 'ownerId')
                   return <th key={uuid()}>{key}</th>
                 })}
               <th>ACTIONS</th>
