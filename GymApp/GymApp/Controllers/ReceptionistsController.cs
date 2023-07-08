@@ -96,6 +96,25 @@ namespace GymApp.Controllers
             return CreatedAtAction("GetReceptionist", new { id = receptionist.Id }, receptionist);
         }
 
+        // GET: api/Receptionists/GetByOwnerId/{ownerId}
+        [HttpGet("GetByOwnerId/{ownerId}")]
+        public async Task<ActionResult<Receptionist>> GetReceptionistByOwnerId(Guid ownerId)
+        {
+            if (_context.Receptionist_1 == null)
+            {
+                return NotFound();
+            }
+
+            var receptionist = await _context.Receptionist_1.FirstOrDefaultAsync(c => c.OwnerId == ownerId);
+
+            if (receptionist == null)
+            {
+                return NotFound();
+            }
+
+            return receptionist;
+        }
+
         // DELETE: api/Receptionists/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReceptionist(Guid id)
