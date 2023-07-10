@@ -104,6 +104,8 @@ namespace GymApp.Controllers
             };
             _context.Client_1.Add(client);
             await _context.SaveChangesAsync();
+
+            await AddRole(userDAO.email, "Customer");
            
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

@@ -35,12 +35,13 @@ const LoginForm = ({ apiClient }) => {
               console.error(error)
             } else {
               // Save the client's ID to local storage
-              localStorage.setItem('client_id', data.Id)
+              console.log(data)
+              console.log(response)
+              localStorage.setItem('client_id', data.id)
             }
           }
         )
-
-        window.location.replace('/')
+        // window.location.replace('/')
       })
       .catch((error) => {
         setError('Nieprawidłowy adres email lub hasło')
