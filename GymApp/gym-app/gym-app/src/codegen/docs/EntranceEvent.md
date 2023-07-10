@@ -7,6 +7,4 @@ Name | Type | Description | Notes
 **ownerId** | **String** |  | [optional] 
 **dateTime** | **Date** |  | [optional] 
 **clientId** | **String** |  | [optional] 
-**client** | [**Client**](Client.md) |  | [optional] 
 **entranceId** | **String** |  | [optional] 
-**entrance** | [**Entrance**](Entrance.md) |  | [optional] 

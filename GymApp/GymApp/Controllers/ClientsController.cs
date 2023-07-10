@@ -50,6 +50,26 @@ namespace GymApp.Controllers
             return client;
         }
 
+        // GET: api/Clients/GetByOwnerId/{ownerId}
+        [HttpGet("GetByOwnerId/{ownerId}")]
+        public async Task<ActionResult<Client>> GetClientByOwnerId(Guid ownerId)
+        {
+            if (_context.Client_1 == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.Client_1.FirstOrDefaultAsync(c => c.OwnerId == ownerId);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return client;
+        }
+
+
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

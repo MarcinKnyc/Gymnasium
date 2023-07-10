@@ -88,6 +88,7 @@ All URIs are relative to */*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *GymApp.ClientsApi* | [**apiClientsGet**](docs/ClientsApi.md#apiClientsGet) | **GET** /api/Clients | 
+*GymApp.ClientsApi* | [**apiClientsGetByOwnerIdOwnerIdGet**](docs/ClientsApi.md#apiClientsGetByOwnerIdOwnerIdGet) | **GET** /api/Clients/GetByOwnerId/{ownerId} | 
 *GymApp.ClientsApi* | [**apiClientsIdDelete**](docs/ClientsApi.md#apiClientsIdDelete) | **DELETE** /api/Clients/{id} | 
 *GymApp.ClientsApi* | [**apiClientsIdGet**](docs/ClientsApi.md#apiClientsIdGet) | **GET** /api/Clients/{id} | 
 *GymApp.ClientsApi* | [**apiClientsIdPut**](docs/ClientsApi.md#apiClientsIdPut) | **PUT** /api/Clients/{id} | 
@@ -125,6 +126,7 @@ Class | Method | HTTP request | Description
 *GymApp.PassesApi* | [**apiPassesIdPut**](docs/PassesApi.md#apiPassesIdPut) | **PUT** /api/Passes/{id} | 
 *GymApp.PassesApi* | [**apiPassesPost**](docs/PassesApi.md#apiPassesPost) | **POST** /api/Passes | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsGet**](docs/ReceptionistsApi.md#apiReceptionistsGet) | **GET** /api/Receptionists | 
+*GymApp.ReceptionistsApi* | [**apiReceptionistsGetByOwnerIdOwnerIdGet**](docs/ReceptionistsApi.md#apiReceptionistsGetByOwnerIdOwnerIdGet) | **GET** /api/Receptionists/GetByOwnerId/{ownerId} | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsIdDelete**](docs/ReceptionistsApi.md#apiReceptionistsIdDelete) | **DELETE** /api/Receptionists/{id} | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsIdGet**](docs/ReceptionistsApi.md#apiReceptionistsIdGet) | **GET** /api/Receptionists/{id} | 
 *GymApp.ReceptionistsApi* | [**apiReceptionistsIdPut**](docs/ReceptionistsApi.md#apiReceptionistsIdPut) | **PUT** /api/Receptionists/{id} | 
@@ -133,6 +135,7 @@ Class | Method | HTTP request | Description
 *GymApp.RegisterApi* | [**apiRegisterAddRoleToSystemPost**](docs/RegisterApi.md#apiRegisterAddRoleToSystemPost) | **POST** /api/Register/AddRoleToSystem | 
 *GymApp.RegisterApi* | [**apiRegisterConfirmEmailPost**](docs/RegisterApi.md#apiRegisterConfirmEmailPost) | **POST** /api/Register/ConfirmEmail | 
 *GymApp.RegisterApi* | [**apiRegisterPost**](docs/RegisterApi.md#apiRegisterPost) | **POST** /api/Register | 
+*GymApp.RegisterApi* | [**apiRegisterRemoveRolePost**](docs/RegisterApi.md#apiRegisterRemoveRolePost) | **POST** /api/Register/RemoveRole | 
 *GymApp.SectorsApi* | [**apiSectorsGet**](docs/SectorsApi.md#apiSectorsGet) | **GET** /api/Sectors | 
 *GymApp.SectorsApi* | [**apiSectorsIdDelete**](docs/SectorsApi.md#apiSectorsIdDelete) | **DELETE** /api/Sectors/{id} | 
 *GymApp.SectorsApi* | [**apiSectorsIdGet**](docs/SectorsApi.md#apiSectorsIdGet) | **GET** /api/Sectors/{id} | 

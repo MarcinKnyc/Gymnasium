@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut"></a>
 # **apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut**
-> apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(passBoughtEventId)
+> PassBoughtEvent apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(passBoughtEventId)
 
 
 
@@ -30,7 +30,7 @@ apiInstance.apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(passBoughtEven
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**PassBoughtEvent**](PassBoughtEvent.md)
 
 ### Authorization
 
@@ -52,11 +52,11 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 <a name="apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut"></a>
 # **apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut**
-> apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(passBoughtEventId, opts)
+> PassBoughtEvent apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(passBoughtEventId, opts)
 
 
 
@@ -73,7 +73,7 @@ apiInstance.apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(passBought
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**PassBoughtEvent**](PassBoughtEvent.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 <a name="apiPassBoughtEventsGet"></a>
 # **apiPassBoughtEventsGet**
@@ -136,7 +136,7 @@ No authorization required
 
 <a name="apiPassBoughtEventsGetActivePassesClientIdGet"></a>
 # **apiPassBoughtEventsGetActivePassesClientIdGet**
-> apiPassBoughtEventsGetActivePassesClientIdGet(clientId)
+> [PassBoughtEvent] apiPassBoughtEventsGetActivePassesClientIdGet(clientId)
 
 
 
@@ -151,7 +151,7 @@ apiInstance.apiPassBoughtEventsGetActivePassesClientIdGet(clientId, (error, data
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**[PassBoughtEvent]**](PassBoughtEvent.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 <a name="apiPassBoughtEventsIdDelete"></a>
 # **apiPassBoughtEventsIdDelete**

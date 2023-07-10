@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GymApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230612165918_test")]
-    partial class test
+    [Migration("20230530121902_newDb")]
+    partial class newDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
