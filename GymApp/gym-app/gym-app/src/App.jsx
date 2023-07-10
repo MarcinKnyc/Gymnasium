@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
 import { ApiClient } from './codegen/src/ApiClient'
 import ClientsPage from './pages/ClientsPage'
 import ReceptionistsPage from './pages/Receptionists'
-import AdminsPage from './pages/AdminsPage'
 import GymsPage from './pages/GymsPage'
 import VerifyCustomerPage from './pages/VerifyCustomerPage'
 import MyProfilePage from './pages/MyProfilePage'
@@ -21,32 +20,42 @@ import MyPassesPage from './pages/MyPassesPage'
 
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
+  const [storedUserId, setStoredUserId] = useState(null)
 
   const apiClient = new ApiClient()
   apiClient.basePath = 'http://localhost'
 
   useEffect(() => {
     setStoredAuthToken(localStorage.getItem('authToken'))
-  }, [storedAuthToken])
+    setStoredUserId(localStorage.getItem('user_id'))
+  }, [storedAuthToken, storedUserId])
 
   const clearStorage = () => {
     localStorage.removeItem('authToken')
+    localStorage.removeItem('user_id')
     setStoredAuthToken(null)
+    setStoredUserId(null)
     window.location.href = '/'
   }
 
   return (
     <div className="App">
       <Router>
-        <Navbar storedAuthToken={storedAuthToken} clearStorage={clearStorage} />
+        <Navbar
+          storedAuthToken={storedAuthToken}
+          storedUserId={storedUserId}
+          clearStorage={clearStorage}
+        />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="login" element={<LoginPage apiClient={apiClient}/>} />
+          <Route path="login" element={<LoginPage apiClient={apiClient} />} />
           <Route path={'/login/register'} element={<RegisterPage />} />
           <Route path={'register'} element={<RegisterPage />} />
           <Route
             path={'Passes'}
-            element={<PassesPage apiClient={apiClient} />}
+            element={
+              <PassesPage apiClient={apiClient} storedUserId={storedUserId} />
+            }
           />
           <Route
             path={'Clients'}
@@ -67,6 +76,7 @@ function App() {
               <MyPassesPage
                 apiClient={apiClient}
                 storedAuthToken={storedAuthToken}
+                storedUserId={storedUserId}
               />
             }
           />

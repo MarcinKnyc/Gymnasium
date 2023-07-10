@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { ClientsApi } from '../codegen/src/api/ClientsApi'
+import jwt_decode from 'jwt-decode'
 
 const LoginForm = ({ apiClient }) => {
   const clientsApi = new ClientsApi(apiClient)
@@ -20,20 +21,24 @@ const LoginForm = ({ apiClient }) => {
       .then((response) => {
         const authToken = response.data.token
         localStorage.setItem('authToken', authToken)
-        
-        const decoded = jwt_decode(authToken); // Decoding the JWT token                
-        const userId = decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];        
-        localStorage.setItem('user_id', userId); // Store the user ID in local storage
+
+        const decoded = jwt_decode(authToken) // Decoding the JWT token
+        const userId =
+          decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        localStorage.setItem('user_id', userId) // Store the user ID in local storage
 
         // todo: check if works after updating swagger
-        clientsApi.apiClientsOwnerOwnerIdGet(userId, (error, data, response) => {
-          if (error) {
-            console.error(error);
-          } else {
-            // Save the client's ID to local storage
-            localStorage.setItem('client_id', data.Id);
+        clientsApi.apiClientsGetByOwnerIdOwnerIdGet(
+          userId,
+          (error, data, response) => {
+            if (error) {
+              console.error(error)
+            } else {
+              // Save the client's ID to local storage
+              localStorage.setItem('client_id', data.Id)
+            }
           }
-        });
+        )
 
         window.location.replace('/')
       })

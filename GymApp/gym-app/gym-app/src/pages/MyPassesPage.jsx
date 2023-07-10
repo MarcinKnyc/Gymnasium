@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import { PassesApi } from '../codegen/src/api/PassesApi'
+import { PassBoughtEventsApi } from '../codegen/src/api/PassBoughtEventsApi'
 import MyPass from '../components/MyPass'
 
-const MyPassesPage = ({ apiClient }) => {
-  const passesApi = new PassesApi(apiClient)
+const MyPassesPage = ({ apiClient, storedUserId }) => {
+  const passesApi = new PassBoughtEventsApi(apiClient)
   const [data, setData] = useState([])
+  const [clientId, setClientId] = useState('')
 
   useEffect(() => {
-    passesApi.apiPassesGet((error, data) => {
-      if (error) {
-        console.error('Error fetching data:', error)
-        return
+    setClientId(storedUserId)
+    passesApi.apiPassBoughtEventsGetActivePassesClientIdGet(
+      clientId,
+      (error, data) => {
+        if (error) {
+          console.error('Error fetching data:', error)
+          return
+        }
+        setData(data)
       }
-      setData(data)
-    })
+    )
   }, [])
 
   return (

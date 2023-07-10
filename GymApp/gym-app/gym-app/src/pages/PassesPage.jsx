@@ -4,7 +4,7 @@ import EditablePass from '../components/EditablePass'
 import { v4 as uuid } from 'uuid'
 import { PassesApi } from '../codegen/src/api/PassesApi'
 
-const PassesPage = ({ apiClient }) => {
+const PassesPage = ({ apiClient, storedUserId }) => {
   const passesApi = new PassesApi(apiClient)
   const [data, setData] = useState([])
   const [editPassId, setEditPassId] = useState(null)
@@ -108,34 +108,48 @@ const PassesPage = ({ apiClient }) => {
 
   return (
     <div className="table-container">
-      <form onSubmit={handleAddFormSubmit}>
-        <span className="title">Add Pass</span>
-        {data[0] &&
-          Object.entries(data[0]).map(([key, value]) => {
-            if (key !== 'id' && key !== 'ownerId' && key != 'passBoughtEvents' && key != 'entranceEvents')
-              return (
-                <input
-                  type="text"
-                  name={key}
-                  placeholder={key}
-                  onChange={handleAddFormChange}
-                  key={key}
-                />
+      {storedUserId !== null && (
+        <form onSubmit={handleAddFormSubmit}>
+          <span className="title">Add Pass</span>
+          {data[0] &&
+            Object.entries(data[0]).map(([key, value]) => {
+              if (
+                key !== 'id' &&
+                key !== 'ownerId' &&
+                key != 'passBoughtEvents' &&
+                key != 'entranceEvents' &&
+                key != 'entrances'
               )
-          })}
+                return (
+                  <input
+                    type="text"
+                    name={key}
+                    placeholder={key}
+                    onChange={handleAddFormChange}
+                    key={key}
+                  />
+                )
+            })}
+          <button type="submit">Add</button>
+        </form>
+      )}
 
-        <button type="submit">Add</button>
-      </form>
       <form className="edit-form" onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
               {data[0] &&
                 Object.entries(data[0]).map(([key, value]) => {
-                  if (key !== 'id' && key !== 'ownerId' && key != 'passBoughtEvents' && key != 'entranceEvents')
-                  return <th key={uuid()}>{key}</th>
+                  if (
+                    key !== 'id' &&
+                    key !== 'ownerId' &&
+                    key != 'passBoughtEvents' &&
+                    key != 'entranceEvents' &&
+                    key != 'entrances'
+                  )
+                    return <th key={uuid()}>{key}</th>
                 })}
-              <th>ACTIONS</th>
+              {storedUserId !== null && <th>ACTIONS</th>}
             </tr>
           </thead>
           <tbody>
@@ -145,12 +159,14 @@ const PassesPage = ({ apiClient }) => {
                   {editPassId === item.id ? (
                     <EditablePass
                       editFormData={editFormData}
+                      storedUserId={storedUserId}
                       handleEditFormChange={handleEditFormChange}
                     />
                   ) : (
                     <Pass
                       {...item}
                       handleEdit={handleEdit}
+                      storedUserId={storedUserId}
                       handleDelete={handleDelete}
                       item={item}
                     />

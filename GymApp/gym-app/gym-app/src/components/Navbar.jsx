@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { navItems } from '../assets/data'
 import logo from '../images/logo.png'
 
-const Navbar = ({ storedAuthToken, clearStorage }) => {
+const Navbar = ({ storedAuthToken, clearStorage, storedUserId }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const handleDropdownToggle = () => {
@@ -26,6 +26,9 @@ const Navbar = ({ storedAuthToken, clearStorage }) => {
       </label>
       <ul className="menu">
         {navItems.map((item) => {
+          if (storedUserId === null && [5, 6, 7].includes(item.id)) {
+            return null
+          }
           return (
             <Link to={item.url} key={item.id}>
               <li>
