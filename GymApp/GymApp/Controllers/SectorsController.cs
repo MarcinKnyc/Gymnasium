@@ -31,6 +31,62 @@ namespace GymApp.Controllers
           }
             return await _context.Sector_1.ToListAsync();
         }
+        // get all the active sectors
+        [HttpGet("GetActiveSectors/{clientId}")]
+        public async Task<ActionResult<IEnumerable<PassBoughtEvent>>> GetAllowedSectors(Guid clientId)
+        {
+            List<Sector> activeSectors = await getActiveSectors(clientId);
+
+            return Ok(activeSectors);
+        }
+
+        // get all the active sectors
+        [HttpGet("CheckIfActive")]
+        public async Task<ActionResult<IEnumerable<PassBoughtEvent>>> GetAllowedSectors(Guid clientId, Guid sectorId)
+        {
+            List<Sector> activeSectors = await getActiveSectors(clientId);
+            bool isActive = activeSectors.Select(c=>c.Id).Contains(sectorId);
+
+            return Ok(isActive);
+        }
+
+        private async Task<List<Sector>> getActiveSectors(Guid clientId)
+        {
+            //from PassBoughtEventsController
+            var activePassBoughtEvents = await _context.Client_1
+                .Where(c => c.Id == clientId)
+                .SelectMany(c => c.PassBoughtEvents)
+                .Include(pbe => pbe.Pass)
+                .Where(pbe => DateTime.UtcNow < pbe.DateTime.AddDays(pbe.Pass.Duration * pbe.refresh))
+                .ToListAsync();
+
+            List<Guid> activePassGuids = activePassBoughtEvents.Select(item => item.PassId).ToList();
+
+            var allSectorsWithEntrances = await _context.Sector_1
+            .Include(c => c.Entrances)
+            .ToListAsync();
+
+            List<Sector> activeSectors = new();
+
+            foreach (var sector in allSectorsWithEntrances)
+            {
+                bool isActive = false;
+                foreach (var entrance in sector.Entrances)
+                {
+                    if (activePassGuids.Contains(entrance.PassId))
+                    {
+                        isActive = true;
+                    }
+
+                }
+                if (isActive)
+                {
+                    activeSectors.Add(sector);
+                }
+            }
+
+            return activeSectors;
+        }
 
         // GET: api/Sectors/5
         [HttpGet("{id}")]
