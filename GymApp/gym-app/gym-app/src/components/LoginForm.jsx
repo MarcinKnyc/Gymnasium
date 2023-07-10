@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { ClientsApi } from '../codegen/src/api/ClientsApi'
+import jwt_decode from "jwt-decode";
 
 const LoginForm = ({ apiClient }) => {
   const clientsApi = new ClientsApi(apiClient)
@@ -26,16 +27,18 @@ const LoginForm = ({ apiClient }) => {
         localStorage.setItem('user_id', userId); // Store the user ID in local storage
 
         // todo: check if works after updating swagger
-        clientsApi.apiClientsOwnerOwnerIdGet(userId, (error, data, response) => {
+        clientsApi.apiClientsGetByOwnerIdOwnerIdGet(userId, (error, data, response) => {
           if (error) {
             console.error(error);
           } else {
             // Save the client's ID to local storage
-            localStorage.setItem('client_id', data.Id);
+            console.log(data)
+            console.log(response)
+            localStorage.setItem('client_id', data.id);
           }
         });
 
-        window.location.replace('/')
+        // window.location.replace('/')
       })
       .catch((error) => {
         setError('Nieprawidłowy adres email lub hasło')
