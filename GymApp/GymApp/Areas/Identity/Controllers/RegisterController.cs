@@ -27,6 +27,7 @@ namespace GymApp.Controllers
         private readonly ILogger<RegisterController> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly AppDbContext _context;
 
         public RegisterController(
             UserManager<GymUser> userManager,
@@ -34,7 +35,9 @@ namespace GymApp.Controllers
             SignInManager<GymUser> signInManager,
             ILogger<RegisterController> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            AppDbContext context
+            )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +46,7 @@ namespace GymApp.Controllers
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _context = context;
         }
 
         private IUserEmailStore<GymUser> GetEmailStore()
@@ -89,8 +93,18 @@ namespace GymApp.Controllers
             }
 
             _logger.LogInformation("User created a new account with password.");
-
             var userId = await _userManager.GetUserIdAsync(user);
+
+            // Create Client with this user's ID as owner's ID.
+            Client client = new Client{
+                Name = "Fill your details",
+                OwnerId = new Guid(userId ?? ""),
+                PhoneNumber = "Fill your details",
+                Surname = "Fill your details",
+            };
+            _context.Client_1.Add(client);
+            await _context.SaveChangesAsync();
+           
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
@@ -147,12 +161,47 @@ namespace GymApp.Controllers
 
             var result = await _userManager.AddToRoleAsync(user, roleName);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)            
             {
-                return Ok($"Role '{roleName}' added to user '{userEmail}'.");
+                return BadRequest("Failed to add role to user.");
+            }
+            
+            if ( roleName == "Receptionist" )
+            {
+                var receptionist = new Receptionist{
+                    Name = "Fill out details",
+                    Surname = "Fill out details",
+                    OwnerId = new Guid(user.Id)
+                };
+                _context.Receptionist_1.Add(receptionist);
+                await _context.SaveChangesAsync();
+                return Ok($"Role '{roleName}' added to user '{userEmail}'. A matching Receptionist has been added to db.");
+            }
+            return Ok($"Role '{roleName}' added to user '{userEmail}'.");
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> RemoveRole(string userEmail, string roleName)
+        {
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            if (user == null)
+            {
+                return NotFound($"User with email '{userEmail}' not found.");
             }
 
-            return BadRequest("Failed to add role to user.");
+            if (!await _roleManager.RoleExistsAsync(roleName))
+            {
+                return NotFound($"Role '{roleName}' not found.");
+            }
+
+            var result = await _userManager.RemoveFromRoleAsync(user, roleName);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Failed to remove role from user.");
+            }
+
+            return Ok($"Role '{roleName}' removed from user '{userEmail}'.");
         }
 
         [HttpPost("[action]")]

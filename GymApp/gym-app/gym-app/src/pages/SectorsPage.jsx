@@ -105,9 +105,7 @@ const SectorsPage = ({ apiClient }) => {
       if (error) {
         console.error(error)
       } else {
-        console.log(data)
         const newData = data.filter((sector) => sector.gymId === id)
-        console.log(newData)
         setData(newData)
       }
     })

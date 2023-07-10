@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sector = ({ id, handleEdit, handleDelete, item }) => {
   return (
@@ -13,6 +14,11 @@ const Sector = ({ id, handleEdit, handleDelete, item }) => {
         <button type="button" onClick={(e) => handleDelete(id)}>
           DELETE
         </button>
+        <Link to={`/Gyms/Sectors/${item.id}/VerifyCustomer`}>
+          <button type="button">
+            Verify Customers
+          </button>
+        </Link>
       </td>
     </tr>
   )
