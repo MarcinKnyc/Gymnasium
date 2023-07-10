@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MyPass = ({ id, handleEdit, handleDelete, item }) => {
+const MyPass = ({ id, handleExtend, handleDeactivate, item }) => {
   return (
     <tr key={id}>
       {Object.entries(item).map(([key, value]) => {
@@ -14,8 +14,8 @@ const MyPass = ({ id, handleEdit, handleDelete, item }) => {
           return <td key={key}>{value}</td>
       })}
       <td>
-        <button type="button">PRZEDŁUŻ</button>
-        <button type="button">DEAKTYWUJ</button>
+        <button type="button" onClick={(e) => handleExtend(e, id, item)}>PRZEDŁUŻ</button>
+        <button type="button" onClick={(e) => handleDeactivate(e, id, item)}>DEAKTYWUJ</button>
       </td>
     </tr>
   )

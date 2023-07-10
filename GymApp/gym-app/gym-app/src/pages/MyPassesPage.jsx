@@ -23,6 +23,36 @@ const MyPassesPage = ({ apiClient, client_id }) => {
       }
     )
   }, [])
+  const handleExtend = (e, id, item) => {
+    e.preventDefault()
+    passesApi.apiPassBoughtEventsExtendPassValidityPassBoughtEventIdPut(
+      id,
+      {extension: 1},
+      (error, data) => {
+        if (error) {
+          console.error('Error fetching data:', error)
+          return
+        } else {
+          window.location.reload()
+        }
+      }
+    )
+  }
+
+  const handleDeactivate = (e, id, item) => {
+    e.preventDefault()
+    passesApi.apiPassBoughtEventsDeactivatePassPassBoughtEventIdPut(
+      id,
+      (error, data) => {
+        if (error) {
+          console.error('Error fetching data:', error)
+          return
+        } else {
+          window.location.reload()
+        }
+      }
+    )
+  }
 
   return (
     <div className="table-container">
@@ -46,7 +76,12 @@ const MyPassesPage = ({ apiClient, client_id }) => {
           </thead>
           <tbody>
             {data.map((item) => {
-              return <MyPass {...item} item={item} />
+              return <MyPass 
+              {...item} 
+              item={item}
+              handleDeactivate={handleDeactivate}
+              handleExtend={handleExtend}
+              />
             })}
           </tbody>
         </table>
