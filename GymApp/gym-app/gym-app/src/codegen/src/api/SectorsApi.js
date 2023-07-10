@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {PassBoughtEvent} from '../model/PassBoughtEvent';
 import {Sector} from '../model/Sector';
 
 /**
@@ -34,6 +35,49 @@ export class SectorsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+    /**
+     * Callback function to receive the result of the apiSectorsCheckIfActiveGet operation.
+     * @callback moduleapi/SectorsApi~apiSectorsCheckIfActiveGetCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/PassBoughtEvent>{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.clientId 
+     * @param {String} opts.sectorId 
+     * @param {module:api/SectorsApi~apiSectorsCheckIfActiveGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    apiSectorsCheckIfActiveGet(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+        
+      };
+      let queryParams = {
+        'clientId': opts['clientId'],'sectorId': opts['sectorId']
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let returnType = [PassBoughtEvent];
+
+      return this.apiClient.callApi(
+        '/api/Sectors/CheckIfActive', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
     /**
      * Callback function to receive the result of the apiSectorsGet operation.
      * @callback moduleapi/SectorsApi~apiSectorsGetCallback
@@ -70,6 +114,51 @@ export class SectorsApi {
 
       return this.apiClient.callApi(
         '/api/Sectors', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the apiSectorsGetActiveSectorsClientIdGet operation.
+     * @callback moduleapi/SectorsApi~apiSectorsGetActiveSectorsClientIdGetCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/PassBoughtEvent>{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} clientId 
+     * @param {module:api/SectorsApi~apiSectorsGetActiveSectorsClientIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    apiSectorsGetActiveSectorsClientIdGet(clientId, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'clientId' is set
+      if (clientId === undefined || clientId === null) {
+        throw new Error("Missing the required parameter 'clientId' when calling apiSectorsGetActiveSectorsClientIdGet");
+      }
+
+      let pathParams = {
+        'clientId': clientId
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let returnType = [PassBoughtEvent];
+
+      return this.apiClient.callApi(
+        '/api/Sectors/GetActiveSectors/{clientId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

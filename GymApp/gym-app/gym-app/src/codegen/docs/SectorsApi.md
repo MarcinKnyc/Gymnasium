@@ -4,11 +4,57 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiSectorsCheckIfActiveGet**](SectorsApi.md#apiSectorsCheckIfActiveGet) | **GET** /api/Sectors/CheckIfActive | 
 [**apiSectorsGet**](SectorsApi.md#apiSectorsGet) | **GET** /api/Sectors | 
+[**apiSectorsGetActiveSectorsClientIdGet**](SectorsApi.md#apiSectorsGetActiveSectorsClientIdGet) | **GET** /api/Sectors/GetActiveSectors/{clientId} | 
 [**apiSectorsIdDelete**](SectorsApi.md#apiSectorsIdDelete) | **DELETE** /api/Sectors/{id} | 
 [**apiSectorsIdGet**](SectorsApi.md#apiSectorsIdGet) | **GET** /api/Sectors/{id} | 
 [**apiSectorsIdPut**](SectorsApi.md#apiSectorsIdPut) | **PUT** /api/Sectors/{id} | 
 [**apiSectorsPost**](SectorsApi.md#apiSectorsPost) | **POST** /api/Sectors | 
+
+<a name="apiSectorsCheckIfActiveGet"></a>
+# **apiSectorsCheckIfActiveGet**
+> [PassBoughtEvent] apiSectorsCheckIfActiveGet(opts)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.SectorsApi();
+let opts = { 
+  'clientId': "38400000-8cf0-11bd-b23e-10b96e4ef00d", // String | 
+  'sectorId': "38400000-8cf0-11bd-b23e-10b96e4ef00d" // String | 
+};
+apiInstance.apiSectorsCheckIfActiveGet(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | [**String**](.md)|  | [optional] 
+ **sectorId** | [**String**](.md)|  | [optional] 
+
+### Return type
+
+[**[PassBoughtEvent]**](PassBoughtEvent.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 <a name="apiSectorsGet"></a>
 # **apiSectorsGet**
@@ -36,6 +82,47 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[Sector]**](Sector.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="apiSectorsGetActiveSectorsClientIdGet"></a>
+# **apiSectorsGetActiveSectorsClientIdGet**
+> [PassBoughtEvent] apiSectorsGetActiveSectorsClientIdGet(clientId)
+
+
+
+### Example
+```javascript
+import {GymApp} from 'gym_app';
+
+let apiInstance = new GymApp.SectorsApi();
+let clientId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // String | 
+
+apiInstance.apiSectorsGetActiveSectorsClientIdGet(clientId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | [**String**](.md)|  | 
+
+### Return type
+
+[**[PassBoughtEvent]**](PassBoughtEvent.md)
 
 ### Authorization
 

@@ -136,7 +136,9 @@ Class | Method | HTTP request | Description
 *GymApp.RegisterApi* | [**apiRegisterConfirmEmailPost**](docs/RegisterApi.md#apiRegisterConfirmEmailPost) | **POST** /api/Register/ConfirmEmail | 
 *GymApp.RegisterApi* | [**apiRegisterPost**](docs/RegisterApi.md#apiRegisterPost) | **POST** /api/Register | 
 *GymApp.RegisterApi* | [**apiRegisterRemoveRolePost**](docs/RegisterApi.md#apiRegisterRemoveRolePost) | **POST** /api/Register/RemoveRole | 
+*GymApp.SectorsApi* | [**apiSectorsCheckIfActiveGet**](docs/SectorsApi.md#apiSectorsCheckIfActiveGet) | **GET** /api/Sectors/CheckIfActive | 
 *GymApp.SectorsApi* | [**apiSectorsGet**](docs/SectorsApi.md#apiSectorsGet) | **GET** /api/Sectors | 
+*GymApp.SectorsApi* | [**apiSectorsGetActiveSectorsClientIdGet**](docs/SectorsApi.md#apiSectorsGetActiveSectorsClientIdGet) | **GET** /api/Sectors/GetActiveSectors/{clientId} | 
 *GymApp.SectorsApi* | [**apiSectorsIdDelete**](docs/SectorsApi.md#apiSectorsIdDelete) | **DELETE** /api/Sectors/{id} | 
 *GymApp.SectorsApi* | [**apiSectorsIdGet**](docs/SectorsApi.md#apiSectorsIdGet) | **GET** /api/Sectors/{id} | 
 *GymApp.SectorsApi* | [**apiSectorsIdPut**](docs/SectorsApi.md#apiSectorsIdPut) | **PUT** /api/Sectors/{id} | 

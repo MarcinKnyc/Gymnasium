@@ -34,6 +34,33 @@
 
   describe('(package)', function() {
     describe('SectorsApi', function() {
+      describe('apiSectorsCheckIfActiveGet', function() {
+        it('should call apiSectorsCheckIfActiveGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for apiSectorsCheckIfActiveGet call and complete the assertions
+          /*
+          var opts = {};
+
+          instance.apiSectorsCheckIfActiveGet(opts, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Array);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(GymApp.PassBoughtEvent);
+            }
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('apiSectorsGet', function() {
         it('should call apiSectorsGet successfully', function(done) {
           // TODO: uncomment apiSectorsGet call and complete the assertions
@@ -51,6 +78,32 @@
             for (let p in dataCtr) {
               let data = dataCtr[p];
               expect(data).to.be.a(GymApp.Sector);
+            }
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('apiSectorsGetActiveSectorsClientIdGet', function() {
+        it('should call apiSectorsGetActiveSectorsClientIdGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for apiSectorsGetActiveSectorsClientIdGet call and complete the assertions
+          /*
+
+          instance.apiSectorsGetActiveSectorsClientIdGet(clientId, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Array);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(GymApp.PassBoughtEvent);
             }
 
             done();
