@@ -21,6 +21,7 @@ import MyPassesPage from './pages/MyPassesPage'
 function App() {
   const [storedAuthToken, setStoredAuthToken] = useState(null)
   const [storedUserId, setStoredUserId] = useState(null)
+  const [client_id, setClient_id] = useState(null)
 
   const apiClient = new ApiClient()
   apiClient.basePath = 'http://localhost'
@@ -28,13 +29,16 @@ function App() {
   useEffect(() => {
     setStoredAuthToken(localStorage.getItem('authToken'))
     setStoredUserId(localStorage.getItem('user_id'))
-  }, [storedAuthToken, storedUserId])
+    setClient_id(localStorage.getItem('client_id'))
+  }, [storedAuthToken, storedUserId, client_id])
 
   const clearStorage = () => {
     localStorage.removeItem('authToken')
     localStorage.removeItem('user_id')
+    localStorage.removeItem('client_id')
     setStoredAuthToken(null)
     setStoredUserId(null)
+    setClient_id(null)
     window.location.href = '/'
   }
 
@@ -44,6 +48,7 @@ function App() {
         <Navbar
           storedAuthToken={storedAuthToken}
           storedUserId={storedUserId}
+          client_id={client_id}
           clearStorage={clearStorage}
         />
         <Routes>
@@ -76,7 +81,6 @@ function App() {
               <MyPassesPage
                 apiClient={apiClient}
                 storedAuthToken={storedAuthToken}
-                storedUserId={storedUserId}
               />
             }
           />

@@ -3,21 +3,23 @@ import { v4 as uuid } from 'uuid'
 import { PassBoughtEventsApi } from '../codegen/src/api/PassBoughtEventsApi'
 import MyPass from '../components/MyPass'
 
-const MyPassesPage = ({ apiClient, storedUserId }) => {
+const MyPassesPage = ({ apiClient, client_id }) => {
   const passesApi = new PassBoughtEventsApi(apiClient)
   const [data, setData] = useState([])
-  const [clientId, setClientId] = useState('')
+  // const [clientId, setClientId] = useState('')
 
   useEffect(() => {
-    setClientId(storedUserId)
+    // setClientId(client_id)
+    // console.log(clientId)
     passesApi.apiPassBoughtEventsGetActivePassesClientIdGet(
-      clientId,
+      localStorage.getItem('client_id'),
       (error, data) => {
         if (error) {
           console.error('Error fetching data:', error)
           return
         }
         setData(data)
+        console.log(data)
       }
     )
   }, [])
@@ -34,7 +36,8 @@ const MyPassesPage = ({ apiClient, storedUserId }) => {
                     key !== 'id' &&
                     key !== 'ownerId' &&
                     key !== 'passBoughtEvents' &&
-                    key !== 'entrances'
+                    key !== 'entrances' &&
+                    key !== 'dateTime'
                   )
                     return <th key={uuid()}>{key}</th>
                 })}

@@ -8,7 +8,8 @@ const MyPass = ({ id, handleEdit, handleDelete, item }) => {
           key !== 'id' &&
           key !== 'ownerId' &&
           key !== 'passBoughtEvents' &&
-          key !== 'entrances'
+          key !== 'entrances' &&
+          key !== 'dateTime'
         )
           return <td key={key}>{value}</td>
       })}

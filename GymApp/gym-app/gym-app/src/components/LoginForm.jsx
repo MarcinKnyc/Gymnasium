@@ -41,7 +41,7 @@ const LoginForm = ({ apiClient }) => {
             }
           }
         )
-        // window.location.replace('/')
+        window.location.replace('/')
       })
       .catch((error) => {
         setError('Nieprawidłowy adres email lub hasło')

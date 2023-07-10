@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { navItems } from '../assets/data'
 import logo from '../images/logo.png'
 
-const Navbar = ({ storedAuthToken, clearStorage, storedUserId }) => {
+const Navbar = ({ storedAuthToken, clearStorage, storedUserId, client_id }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const handleDropdownToggle = () => {

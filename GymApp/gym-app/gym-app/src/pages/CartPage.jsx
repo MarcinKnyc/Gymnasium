@@ -17,10 +17,11 @@ const CartPage = ({ apiClient }) => {
 
     const boughtPass = {
       id: uuid(),
-      ownerId: '2290555a-d873-467d-a48f-898ac084d72a',
+      ownerId: localStorage.getItem('user_id'),
       dateTime: new Date(),
       passId: id,
-      clientId: '2290555a-d873-467d-a48f-898ac084d72a',
+      refresh: 1,
+      clientId: localStorage.getItem('client_id'),
     }
 
     let opts = {
