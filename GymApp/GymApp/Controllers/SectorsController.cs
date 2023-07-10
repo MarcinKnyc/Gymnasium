@@ -42,7 +42,7 @@ namespace GymApp.Controllers
 
         // get all the active sectors
         [HttpGet("CheckIfActive")]
-        public async Task<ActionResult<IEnumerable<PassBoughtEvent>>> GetAllowedSectors(Guid clientId, Guid sectorId)
+        public async Task<ActionResult<bool>> GetAllowedSectors(Guid clientId, Guid sectorId)
         {
             List<Sector> activeSectors = await getActiveSectors(clientId);
             bool isActive = activeSectors.Select(c=>c.Id).Contains(sectorId);

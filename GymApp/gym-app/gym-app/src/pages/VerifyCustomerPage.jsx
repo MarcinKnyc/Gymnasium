@@ -8,48 +8,44 @@ const VerifyCustomerPage = ({ apiClient }) => {
   const customersApi = new ClientsApi(apiClient);
   const [customers, setCustomers] = useState([]);
   const [accessInfo, setAccessInfo] = useState({});
-  // console.log('sectorId: {sectorId}')
-  // console.log(sectorId)
 
   useEffect(() => {
-    customersApi.apiClientsGet((error, data) => {
+    customersApi.apiClientsGet(async (error, data) => {
       if (error) {
         console.error('Error fetching customers:', error);
         return;
       }
       setCustomers(data);
-      data.forEach((customer) => {
-        hasAccessToSector(customer.id, (access) => {
-          setAccessInfo((prevAccessInfo) => ({ ...prevAccessInfo, [customer.id]: access }));
-        });
-      });
+      const accessPromises = data.map((customer) =>
+        new Promise((resolve) => {
+          hasAccessToSector(customer.id, (access) => {
+            resolve({ id: customer.id, access });
+          });
+        })
+      );
+      const accessResults = await Promise.all(accessPromises);
+      const newAccessInfo = accessResults.reduce((acc, { id, access }) => {
+        acc[id] = access;
+        return acc;
+      }, {});
+      setAccessInfo(newAccessInfo);
     });
   }, []);
+  
+  
 
   const passesApi = new PassBoughtEventsApi(apiClient);
 
-  const hasAccessToSector = (customerGuid, callback) => {
-    passesApi.apiPassBoughtEventsGetActivePassesClientIdGet(customerGuid, (error, response) => {
-      console.log('function for client:')
-      console.log(customerGuid)
+  const hasAccessToSector = (clientId, callback) => {
+    passesApi.apiSectorsCheckIfActiveGet({ clientId, sectorId }, (error, response) => {
       if (error) {
-        console.error('Error fetching active passes:', error);
+        console.error('Error checking if active:', error);
         callback(false);
       } else {
-        console.log(response)
-        console.log(typeof(response))
-        if (Array.isArray(response)) {
-          const hasAccess = response.some((event) => event.Pass.SectorId === sectorId);         
-          console.log('returned:')
-          console.log(hasAccess)
-          callback(hasAccess);
-        } else {
-          console.error('Unexpected response format:', response);
-          callback(false);
-        }
+        callback(response);
       }
     });
-  };
+  };  
 
   return (
     <div className="table-container">
