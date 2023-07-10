@@ -139,7 +139,8 @@ const SectorsPage = ({ apiClient }) => {
             <tr>
               {data[0] &&
                 Object.entries(data[0]).map(([key, value]) => {
-                  return <th key={uuid()}>{key}</th>
+                  if (key !== 'id' && key !== 'ownerId')
+                    return <th key={uuid()}>{key}</th>
                 })}
               <th>ACTIONS</th>
             </tr>
