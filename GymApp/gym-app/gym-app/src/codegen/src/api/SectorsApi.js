@@ -39,7 +39,7 @@ export class SectorsApi {
      * Callback function to receive the result of the apiSectorsCheckIfActiveGet operation.
      * @callback moduleapi/SectorsApi~apiSectorsCheckIfActiveGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/PassBoughtEvent>{ data The data returned by the service call.
+     * @param {'Boolean'{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -70,7 +70,7 @@ export class SectorsApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['text/plain', 'application/json', 'text/json'];
-      let returnType = [PassBoughtEvent];
+      let returnType = 'Boolean';
 
       return this.apiClient.callApi(
         '/api/Sectors/CheckIfActive', 'GET',

@@ -35,13 +35,11 @@ const LoginForm = ({ apiClient }) => {
               console.error(error)
             } else {
               // Save the client's ID to local storage
-              console.log(data)
-              console.log(response)
               localStorage.setItem('client_id', data.id)
+              window.location.replace('/') //todo: krzychu please check
             }
           }
         )
-        window.location.replace('/')
       })
       .catch((error) => {
         setError('Nieprawidłowy adres email lub hasło')
@@ -70,9 +68,6 @@ const LoginForm = ({ apiClient }) => {
         />
         <input type="submit" value="Zaloguj się" />
       </form>
-      <a href="#">
-        <h3>Nie pamiętam hasła</h3>
-      </a>
       <h2 style={{ fontSize: '2.5rem', marginTop: '100px' }}>
         Nie masz jeszcze konta?
       </h2>

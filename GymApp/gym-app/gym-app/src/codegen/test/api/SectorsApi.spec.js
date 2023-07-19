@@ -46,13 +46,8 @@
               return;
             }
             // TODO: update response assertions
-            let dataCtr = data;
-            expect(dataCtr).to.be.an(Array);
-            expect(dataCtr).to.not.be.empty();
-            for (let p in dataCtr) {
-              let data = dataCtr[p];
-              expect(data).to.be.a(GymApp.PassBoughtEvent);
-            }
+            expect(data).to.be.a(&#x27;boolean&#x27;);
+            // expect(data).to.be(null);
 
             done();
           });

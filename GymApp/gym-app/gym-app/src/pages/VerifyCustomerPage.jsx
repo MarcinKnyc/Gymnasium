@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClientsApi } from '../codegen/src/api/ClientsApi';
-import { PassBoughtEventsApi } from '../codegen/src/api/PassBoughtEventsApi';
+import { SectorsApi } from '../codegen/src/api/SectorsApi';
 
 const VerifyCustomerPage = ({ apiClient }) => {
   const { sectorId } = useParams();
@@ -16,28 +16,27 @@ const VerifyCustomerPage = ({ apiClient }) => {
         return;
       }
       setCustomers(data);
-      const accessPromises = data.map((customer) =>
-        new Promise((resolve) => {
-          hasAccessToSector(customer.id, (access) => {
-            resolve({ id: customer.id, access });
+      let newAccessInfo =[]
+      // Use Promise.all to wait for all promises to resolve
+      await Promise.all(data.map(async (datapoint) => {
+        const clientId = datapoint.id;
+        // Wrap hasAccessToSector in a Promise 
+        newAccessInfo[clientId] = await new Promise((resolve) => {
+          hasAccessToSector(clientId, (access) => {
+            resolve(access);
           });
-        })
-      );
-      const accessResults = await Promise.all(accessPromises);
-      const newAccessInfo = accessResults.reduce((acc, { id, access }) => {
-        acc[id] = access;
-        return acc;
-      }, {});
+        });
+      }));
       setAccessInfo(newAccessInfo);
     });
   }, []);
   
   
 
-  const passesApi = new PassBoughtEventsApi(apiClient);
+  const sectorsApi = new SectorsApi(apiClient);
 
   const hasAccessToSector = (clientId, callback) => {
-    passesApi.apiSectorsCheckIfActiveGet({ clientId, sectorId }, (error, response) => {
+    sectorsApi.apiSectorsCheckIfActiveGet({ clientId, sectorId }, (error, response) => {
       if (error) {
         console.error('Error checking if active:', error);
         callback(false);

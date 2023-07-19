@@ -40,7 +40,7 @@ namespace GymApp.Controllers
             return Ok(activeSectors);
         }
 
-        // get all the active sectors
+        // check one specific sector ID if it's active for a given clientID
         [HttpGet("CheckIfActive")]
         public async Task<ActionResult<bool>> GetAllowedSectors(Guid clientId, Guid sectorId)
         {

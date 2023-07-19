@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="apiSectorsCheckIfActiveGet"></a>
 # **apiSectorsCheckIfActiveGet**
-> [PassBoughtEvent] apiSectorsCheckIfActiveGet(opts)
+> &#x27;Boolean&#x27; apiSectorsCheckIfActiveGet(opts)
 
 
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[PassBoughtEvent]**](PassBoughtEvent.md)
+**&#x27;Boolean&#x27;**
 
 ### Authorization
 
