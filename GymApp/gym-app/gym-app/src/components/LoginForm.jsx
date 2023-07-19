@@ -36,10 +36,11 @@ const LoginForm = ({ apiClient }) => {
             } else {
               // Save the client's ID to local storage
               localStorage.setItem('client_id', data.id)
-              window.location.replace('/') //todo: krzychu please check
+              
             }
           }
         )
+        window.location.replace('/')
       })
       .catch((error) => {
         setError('Nieprawidłowy adres email lub hasło')
